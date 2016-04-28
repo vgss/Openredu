@@ -6,7 +6,19 @@ end
 
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 
-env = ENV['RUBBER_ENV'] ||= (ENV['RAILS_ENV'] || 'production')
+## === With the following code ===
+## So that we can do `cap staging deploy` instead of RUBBER_ENV=staging cap deploy
+env = ARGV.shift
+# Default to vagrant if not provided
+stages = %w( staging production new_stack)
+default_stage = 'production'
+unless stages.include?(env)
+  # using default stage, put that argument back
+  ARGV.unshift(env)
+  env = default_stage
+end
+ENV['RUBBER_ENV'] = ENV['RAILS_ENV'] = env
+
 root = File.dirname(__FILE__)
 
 # this tries first as a rails plugin then as a gem
