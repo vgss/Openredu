@@ -1,5 +1,7 @@
 # This is a sample Capistrano config file for rubber
 
+set :initial_ssh_user, 'root'
+
 set :rails_env, Rubber.env
 
 on :load do
