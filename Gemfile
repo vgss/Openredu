@@ -93,6 +93,7 @@ group :development, :test do
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
   gem 'sunspot_solr'
+  gem 'debugger'
 end
 
 group :test do
@@ -112,10 +113,6 @@ end
 
 group :production do
   gem 'newrelic_rpm'
-end
-
-group :debug do
-  gem 'debugger'
 end
 
 if RUBY_VERSION =~ /1.9/
