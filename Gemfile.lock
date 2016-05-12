@@ -63,22 +63,6 @@ GIT
     redu_analytics (0.0.3)
       lazy_high_charts
 
-GIT
-  remote: git://github.com/redu/vis_client.git
-  revision: 4e73d1de4004d60f63d891c8232e799664b2d5a4
-  branch: ruby-1-9-3
-  specs:
-    vis_client (0.0.7)
-      activerecord (~> 3)
-      bson_ext (~> 1.5)
-      configurable
-      delayed_job_mongoid
-      faraday
-      json
-      mongoid (~> 2.7)
-      roar
-      valium
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,14 +98,6 @@ GEM
       multi_json (~> 1.0)
     acts_as_tree (0.1.1)
     addressable (2.3.4)
-    amq-client (1.0.2)
-      amq-protocol (>= 1.2.0)
-      eventmachine
-    amq-protocol (1.6.0)
-    amqp (1.0.2)
-      amq-client (~> 1.0.2)
-      amq-protocol (>= 1.3.0)
-      eventmachine
     arel (3.0.2)
     asset_sync (0.5.4)
       activemodel
@@ -145,8 +121,6 @@ GEM
     bson_ext (1.8.6)
       bson (~> 1.8.6)
     builder (3.0.4)
-    bunny (0.9.0.pre13)
-      amq-protocol (>= 1.6.0)
     cancan (1.6.10)
     capistrano (2.15.7)
       highline
@@ -171,10 +145,6 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    config_parser (0.5.5)
-    configurable (1.0.0)
-      config_parser (~> 0.5.4)
-      lazydoc (~> 1.0)
     cookiejar (0.3.0)
     crack (0.3.2)
     css_parser (1.3.4)
@@ -191,12 +161,6 @@ GEM
     debugger-ruby_core_source (1.2.2)
     deep_cloneable (1.5.1)
       activerecord (>= 3.1)
-    delayed_job (3.0.5)
-      activesupport (~> 3.0)
-    delayed_job_mongoid (1.1.0)
-      delayed_job (~> 3.0)
-      mongo (~> 1.6)
-      mongoid (>= 2.0)
     destroy_soon (0.0.6)
       activerecord (>= 3.0.20)
       activesupport (>= 3.0.20)
@@ -266,7 +230,6 @@ GEM
     lazy_high_charts (1.5.4)
       bundler (>= 1.0)
       hash-deep-merge
-    lazydoc (1.0)
     libv8 (3.16.14.15)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -275,12 +238,6 @@ GEM
     mime-types (1.23)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
-    mongo (1.8.6)
-      bson (~> 1.8.6)
-    mongoid (2.7.1)
-      activemodel (~> 3.1)
-      mongo (~> 1.8)
-      tzinfo (~> 0.3.22)
     multi_json (1.7.4)
     multipart-post (1.2.0)
     mysql2 (0.3.11)
@@ -455,13 +412,6 @@ GEM
     unicorn (5.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    untied-publisher (0.0.7.pre3)
-      activerecord
-      amqp
-      bunny (>= 0.0.9.pre13)
-      configurable
-      json
-      representable
     useragent (0.6.0)
     uuidtools (2.1.3)
     valium (0.5.0)
@@ -503,7 +453,6 @@ DEPENDENCIES
   date_validator
   debugger
   deep_cloneable
-  delayed_job_mongoid
   destroy_soon
   dynamic_form
   em-http-request
@@ -554,10 +503,8 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier (~> 2)
   unicorn
-  untied-publisher (~> 0.0.7.pre3)
   useragent
   valium
-  vis_client!
   webmock
   whenever
   yajl-ruby
