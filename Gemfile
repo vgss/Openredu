@@ -68,6 +68,10 @@ gem 'rails_autolink'
 gem 'rubyzip', require: 'zip/zip'
 gem 'truncate_html'
 
+gem 'capistrano'
+gem 'rubber'
+gem 'unicorn'
+
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'
 gem 'rack-cors', require: 'rack/cors'
