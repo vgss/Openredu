@@ -34,6 +34,9 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: mongodb
     options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: solr_sunspot
+    options: {}
   instance_id: staging
   image_type:
   image_id:
