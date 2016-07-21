@@ -31,6 +31,9 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: web
     options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mongodb
+    options: {}
   instance_id: staging
   image_type:
   image_id:

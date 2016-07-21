@@ -161,6 +161,12 @@ GEM
     debugger-ruby_core_source (1.2.2)
     deep_cloneable (1.5.1)
       activerecord (>= 3.1)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
+    delayed_job_mongoid (1.1.0)
+      delayed_job (~> 3.0)
+      mongo (~> 1.6)
+      mongoid (>= 2.0)
     destroy_soon (0.0.6)
       activerecord (>= 3.0.20)
       activesupport (>= 3.0.20)
@@ -238,6 +244,12 @@ GEM
     mime-types (1.23)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
+    mongo (1.8.6)
+      bson (~> 1.8.6)
+    mongoid (2.7.1)
+      activemodel (~> 3.1)
+      mongo (~> 1.8)
+      tzinfo (~> 0.3.22)
     multi_json (1.7.4)
     multipart-post (1.2.0)
     mysql2 (0.3.11)
@@ -453,6 +465,7 @@ DEPENDENCIES
   date_validator
   debugger
   deep_cloneable
+  delayed_job_mongoid
   destroy_soon
   dynamic_form
   em-http-request
