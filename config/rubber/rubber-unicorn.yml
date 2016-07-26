@@ -6,3 +6,4 @@ role_dependencies:
 roles:
   unicorn:
     gems: [unicorn]
+    packages: [imagemagick, libmagickwand-dev]
