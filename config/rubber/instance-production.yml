@@ -67,6 +67,9 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: mongodb
     options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: delayed_job
+    options: {}
   instance_id: db01
   image_type:
   image_id:
