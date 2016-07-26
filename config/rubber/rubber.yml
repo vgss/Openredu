@@ -30,14 +30,14 @@ domain: redu.cin.ufpe.br
 #
 # rubber_secret: "#{File.expand_path('~') + '/.ec2' + (Rubber.env == 'production' ? '' : '_dev') + '/rubber-secret.yml' rescue 'rubber-secret.yml'}"
 
-# OPTIONAL: Encryption key that was used to obfuscate the contents of rubber-secret.yml with "rubber util:obfuscation" 
+# OPTIONAL: Encryption key that was used to obfuscate the contents of rubber-secret.yml with "rubber util:obfuscation"
 # Not that much better when stored in here, but you could use a ruby snippet in here to fetch it from a key server or something
 #
 # rubber_secret_key: "XXXyyy=="
 
 # REQUIRED All known cloud providers with the settings needed to configure them
 # There's only one working cloud provider right now - Amazon Web Services
-# To implement another, clone lib/rubber/cloud/aws.rb or make the fog provider 
+# To implement another, clone lib/rubber/cloud/aws.rb or make the fog provider
 # work in a generic fashion
 #
 cloud_providers:
@@ -73,6 +73,7 @@ cloud_provider: generic
 # OPTIONAL: Default ports for security groups
 web_port: 80
 web_ssl_port: 443
+web_mysql_port: 3306
 web_tools_port: 8080
 web_tools_ssl_port: 8443
 
@@ -116,6 +117,17 @@ security_groups:
       - protocol: tcp
         from_port: "#{web_ssl_port}"
         to_port: "#{web_ssl_port}"
+        source_ips: [0.0.0.0/0]
+      - protocol: tcp
+        from_port: "#{web_mysql_port}"
+        to_port: "#{web_mysql_port}"
+        source_ips: [0.0.0.0/0]
+  db:
+    description: The db server security group to allow web servers to connect
+    rules:
+      - protocol: tcp
+        from_port: "#{web_mysql_port}"
+        to_port: "#{web_mysql_port}"
         source_ips: [0.0.0.0/0]
   web_tools:
     description: "To open up port #{web_tools_port}/#{web_tools_ssl_port} for internal/tools http server"
