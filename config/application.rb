@@ -94,7 +94,7 @@ module Redu
       :s3_credentials => config.s3_credentials,
       :bucket => config.s3_credentials['bucket'], # redu-uploads
       :path => ":class/:attachment/:id/:style/:basename.:extension",
-      :default_url => "http://#{config.s3_credentials['assets_bucket']}.s3.amazonaws.com/images/new/missing_:class_:style.png",
+      :default_url => "http://s3.amazonaws.com/#{config.s3_credentials['assets_bucket']}/assets/missing_:class_:style.png",
     }
 
     config.paperclip_environment = config.paperclip.merge({
