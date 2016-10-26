@@ -523,5 +523,8 @@ DEPENDENCIES
   yajl-ruby
   zencoder
 
+RUBY VERSION
+   ruby 1.9.3p551
+
 BUNDLED WITH
-   1.11.2
+   1.13.6

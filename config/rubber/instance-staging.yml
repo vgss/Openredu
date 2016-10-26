@@ -1,7 +1,7 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
   name: staging
-  domain: redu.cin.ufpe.br
+  domain: redu-util.cin.ufpe.br
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
     name: app
@@ -47,9 +47,9 @@
   network:
   gateway:
   external_host:
-  external_ip: 172.21.6.100
+  external_ip: 172.21.6.103
   internal_host:
-  internal_ip: 172.21.6.100
+  internal_ip: 172.21.6.103
   provider: generic
   platform: linux
   root_device_type:
