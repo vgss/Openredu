@@ -63,4 +63,6 @@ Redu::Application.configure do
     :students_participation => "http://visstaging.redu.com.br/user_spaces/participation.json"
   }
 
+  # Generate digests for assets URLs
+  config.assets.digest = true
 end

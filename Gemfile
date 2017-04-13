@@ -44,13 +44,15 @@ gem 'scribd_fu', git: 'git://github.com/guiocavalcanti/scribd_fu.git',
   branch: 'without-scape'
 gem 'simple-navigation', git: 'git://github.com/andi/simple-navigation.git'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'route_translator'
 gem 'useragent'
-gem 'vis_client', git: 'git://github.com/redu/vis_client.git',
-  branch: 'ruby-1-9-3'
+#gem 'vis_client', git: 'git://github.com/redu/vis_client.git',
+  #branch: 'ruby-1-9-3'
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
-gem 'untied-publisher', '~> 0.0.7.pre3'
+gem 'zencoder'
+#gem 'untied-publisher', '~> 0.0.7.pre3'
 gem 'yajl-ruby'
 gem 'simple_acts_as_list'
 gem 'ey_config'
@@ -64,6 +66,10 @@ gem 'simple-private-messages', '0.0.0', # A gem não possui .gemspec
 gem 'rails_autolink'
 gem 'rubyzip', require: 'zip/zip'
 gem 'truncate_html'
+
+gem 'capistrano'
+gem 'rubber'
+gem 'unicorn'
 
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'
@@ -85,7 +91,7 @@ group :development, :test do
   gem 'no_peeping_toms', git: 'git://github.com/patmaddox/no-peeping-toms.git'
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
-  gem 'sunspot_solr'
+  gem 'debugger'
 end
 
 group :test do
@@ -107,6 +113,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-group :debug do
-  gem 'debugger'
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
 end
