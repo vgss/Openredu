@@ -1,12 +1,12 @@
 # REQUIRED: The name of your application
-app_name: redu
+app_name: openredu
 
 # REQUIRED: The system user to run your app servers as
 app_user: root
 
 # REQUIRED: Notification emails (e.g. monit) get sent to this address
 #
-admin_email: "root@#{full_host}"
+admin_email: "yhsmsb@cin.ufpe.br"
 
 # OPTIONAL: If not set, you won't be able to access web_tools
 # server (graphite, graylog, monit status, haproxy status, etc)
