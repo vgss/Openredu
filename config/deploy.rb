@@ -1,9 +1,9 @@
 # This is a sample Capistrano config file for rubber
 set :stages, %w(staging production)
-set :default_stage, "production"
+set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
-set :initial_ssh_user, 'root'
+set :initial_ssh_user, 'admin'
 
 set :rails_env, Rubber.env
 

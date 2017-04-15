@@ -11,7 +11,7 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 env = ARGV.shift
 # Default to vagrant if not provided
 stages = %w( staging production new_stack)
-default_stage = 'production'
+default_stage = 'staging'
 unless stages.include?(env)
   # using default stage, put that argument back
   ARGV.unshift(env)
