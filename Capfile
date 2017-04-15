@@ -10,8 +10,8 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 ## So that we can do `cap staging deploy` instead of RUBBER_ENV=staging cap deploy
 env = ARGV.shift
 # Default to vagrant if not provided
-stages = %w( staging production new_stack)
-default_stage = 'production'
+stages = %w( staging production )
+default_stage = 'staging'
 unless stages.include?(env)
   # using default stage, put that argument back
   ARGV.unshift(env)
