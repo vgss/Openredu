@@ -7,7 +7,7 @@ Redu::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
@@ -32,6 +32,14 @@ Redu::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
+  config.assets.prefix = '/assets'
+
+  # Compress JavaScripts and CSS
+  config.assets.compress = true
+
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = false
+
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
@@ -43,26 +51,11 @@ Redu::Application.configure do
   config.i18n.fallbacks = true
 
   # Nome e URL do app
-  config.url = "www.redu.com.br"
+  config.url = "staging.openredu.com"
 
   config.action_mailer.default_url_options = { :host => config.url }
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  }
-
-  # Configurações de VisClient
-  config.vis_client = {
-    :url => "http://visstaging.redu.com.br/hierarchy_notifications.json"
-  }
-
-  config.vis = {
-    :subject_activities => "http://visstaging.redu.com.br/subjects/activities.json",
-    :lecture_participation => "http://visstaging.redu.com.br/lectures/participation.json",
-    :students_participation => "http://visstaging.redu.com.br/user_spaces/participation.json"
-  }
-
-  # Generate digests for assets URLs
-  config.assets.digest = true
 end
