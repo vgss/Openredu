@@ -37,6 +37,10 @@
       <%= content_tag :div, id: "what-is-missing-box",
         style: "display: #{what_is_missing_box_display(@user)}" do %>
         <div class="content-section">
+          <%= render "users/aviso"%>
+        </div>
+        <hr class="list-separator">
+        <div class="content-section">
           <%= render "users/explore_redu", user: @user %>
         </div>
         <hr class="list-separator">
