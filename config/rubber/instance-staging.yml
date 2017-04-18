@@ -1,7 +1,7 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
-  name: staging
-  domain: redu-util.cin.ufpe.br
+  name: demo
+  domain: openredu.ufpe.br
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
     name: app
@@ -37,22 +37,22 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: solr_sunspot
     options: {}
-  instance_id: staging
-  image_type:
-  image_id:
+  instance_id: demo
+  image_type: 
+  image_id: 
   security_groups:
   - default
   - web
-  zone:
-  network:
-  gateway:
-  external_host:
-  external_ip: 172.21.6.103
-  internal_host:
-  internal_ip: 172.21.6.103
+  zone: 
+  network: 
+  gateway: 
+  external_host: 
+  external_ip: 172.21.6.115
+  internal_host: 
+  internal_ip: 172.21.6.115
   provider: generic
   platform: linux
-  root_device_type:
+  root_device_type: 
 - volumes: {}
   static_ips: {}
   vpc: {}
