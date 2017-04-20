@@ -1,0 +1,92 @@
+---
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: web01
+  domain: redu.cin.ufpe.br
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: web
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: app
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: unicorn
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: nginx
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: web01
+  image_type:
+  image_id:
+  security_groups:
+  - default
+  - web
+  - db
+  zone:
+  network:
+  gateway:
+  external_host:
+  external_ip: 172.21.6.100
+  internal_host:
+  internal_ip: 172.21.6.100
+  provider: generic
+  platform: linux
+  root_device_type:
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: db01
+  domain: redu.cin.ufpe.br
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mysql_master
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mysql
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: db
+    options:
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: memcached
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: solr_sunspot
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mongodb
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: delayed_job
+    options: {}
+  instance_id: db01
+  image_type:
+  image_id:
+  security_groups:
+  - default
+  - web
+  - db
+  zone:
+  network:
+  gateway:
+  external_host:
+  external_ip: 172.21.6.102
+  internal_host:
+  internal_ip: 172.21.6.102
+  provider: generic
+  platform: linux
+  root_device_type:
+- volumes: {}
+  static_ips: {}
+  vpc: {}
