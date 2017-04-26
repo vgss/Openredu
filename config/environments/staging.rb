@@ -58,4 +58,15 @@ Redu::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # Configurações de VisClient
+  config.vis_client = {
+    :url => "http://localhost:4000/hierarchy_notifications.json",
+    :host => "http://localhost:4000"
+  }
+
+  config.vis = {
+    :subject_activities => "http://localhost:4000/subjects/activities.json",
+    :lecture_participation => "http://localhost:4000/lectures/participation.json",
+    :students_participation => "http://localhost:4000/user_spaces/participation.json"
+  }
 end
