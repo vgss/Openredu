@@ -18,7 +18,8 @@ timezone: US/Eastern
 
 # REQUIRED: the domain all the instances should be associated with
 #
-domain: redu-util.cin.ufpe.br
+
+domain: openredu.ufpe.br
 
 # OPTIONAL: See rubber-dns.yml for dns configuration
 # This lets rubber update a dynamic dns service with the instance alias

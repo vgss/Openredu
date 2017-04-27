@@ -52,6 +52,7 @@ gem 'vis_client', git: 'git://github.com/redu/vis_client.git',
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
 gem 'untied-publisher', '~> 0.0.7.pre3'
+gem 'zencoder'
 gem 'yajl-ruby'
 gem 'simple_acts_as_list'
 gem 'ey_config'
@@ -67,8 +68,12 @@ gem 'rubyzip', require: 'zip/zip'
 gem 'truncate_html'
 
 gem 'capistrano'
-gem 'rubber'
+gem 'rubber', '3.2.1'
 gem 'unicorn'
+gem 'net-ssh', '2.9.4'
+gem 'net-scp', '1.0.4'
+gem 'fog', '1.9.0'
+gem 'net-ssh-gateway', '1.3.0'
 
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'

@@ -234,8 +234,8 @@ module Redu
     # Configuração da aplicação em omniauth providers
     config.omniauth = {
       :facebook => {
-        :app_id => ENV['FACEBOOK_APP_ID'],
-        :app_secret => ENV['FACEBOOK_APP_SECRET'],
+        :app_id => '358542677860803',
+        :app_secret => 'dda633af5bd6e9d64820d47bf6ce14a7',
         :scope => 'public_profile, email',
         :info_fields => 'email,first_name,last_name'
       }
