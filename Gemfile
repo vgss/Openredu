@@ -80,7 +80,6 @@ group :assets do
   gem 'compass-rails'
   gem 'therubyracer', platforms: :ruby
   gem 'uglifier', '~> 2'
-  gem 'asset_sync'
   gem 'turbo-sprockets-rails3'
 end
 

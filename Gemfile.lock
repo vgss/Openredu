@@ -119,9 +119,6 @@ GEM
       amq-protocol (~> 1.9)
       eventmachine
     arel (3.0.2)
-    asset_sync (0.5.4)
-      activemodel
-      fog
     authlogic (3.3.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
@@ -473,7 +470,6 @@ DEPENDENCIES
   acts-as-taggable-on!
   acts_as_tree (~> 0.1.1)
   ajaxful_rating!
-  asset_sync
   authlogic
   awesome_nested_fields
   aws-s3
