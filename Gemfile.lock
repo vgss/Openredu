@@ -63,6 +63,22 @@ GIT
     redu_analytics (0.0.3)
       lazy_high_charts
 
+GIT
+  remote: https://github.com/Openredu/vis_client.git
+  revision: 4e73d1de4004d60f63d891c8232e799664b2d5a4
+  branch: ruby-1-9-3
+  specs:
+    vis_client (0.0.7)
+      activerecord (~> 3)
+      bson_ext (~> 1.5)
+      configurable
+      delayed_job_mongoid
+      faraday
+      json
+      mongoid (~> 2.7)
+      roar
+      valium
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,10 +114,16 @@ GEM
       multi_json (~> 1.0)
     acts_as_tree (0.1.1)
     addressable (2.3.4)
+    amq-protocol (1.9.2)
+    amqp (1.5.3)
+      amq-protocol (~> 1.9)
+      eventmachine
     arel (3.0.2)
-    asset_sync (0.5.4)
+    asset_sync (2.0.0)
       activemodel
-      fog
+      fog-core
+      mime-types
+      unf
     authlogic (3.3.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
@@ -121,6 +143,8 @@ GEM
     bson_ext (1.8.6)
       bson (~> 1.8.6)
     builder (3.0.4)
+    bunny (2.0.0)
+      amq-protocol (>= 1.9.2)
     cancan (1.6.10)
     capistrano (2.15.7)
       highline
@@ -134,7 +158,7 @@ GEM
     chunky_png (1.2.8)
     ckeditor (3.4.2.pre)
       mime-types (>= 1.16)
-    clamp (1.0.0)
+    clamp (1.1.2)
     classy_enum (3.2.1)
       rails (>= 3.0)
     cocaine (0.3.2)
@@ -145,6 +169,10 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    config_parser (0.5.5)
+    configurable (1.0.0)
+      config_parser (~> 0.5.4)
+      lazydoc (~> 1.0)
     cookiejar (0.3.0)
     crack (0.3.2)
     css_parser (1.3.4)
@@ -185,7 +213,7 @@ GEM
     eventmachine (1.0.3)
     exceptional (2.0.33)
       rack
-    excon (0.21.0)
+    excon (0.55.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ey_config (0.0.6)
@@ -197,20 +225,25 @@ GEM
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.8.1)
-    fog (1.11.1)
+    fog (1.9.0)
       builder
-      excon (~> 0.20)
+      excon (~> 0.14)
       formatador (~> 0.2.0)
-      json (~> 1.7)
       mime-types
-      net-scp (~> 1.1)
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
-    formatador (0.2.4)
+    fog-core (1.44.3)
+      builder
+      excon (~> 0.49)
+      formatador (~> 0.2)
+    formatador (0.2.5)
     fssm (0.2.10)
     hash-deep-merge (0.1.1)
     hashie (3.4.6)
+    highline (1.7.8)
     hike (1.2.2)
     hooks (0.3.1)
     htmlentities (4.3.1)
@@ -229,6 +262,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     jwt (1.5.6)
+    kgio (2.10.0)
     lazy_high_charts (1.5.4)
       bundler (>= 1.0)
       hash-deep-merge
@@ -251,12 +285,12 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.3.11)
-    net-scp (1.1.1)
-      net-ssh (>= 2.6.5)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.4)
-    net-ssh-gateway (1.2.0)
+    net-ssh-gateway (1.3.0)
       net-ssh (>= 2.6.5)
     newrelic_rpm (3.6.2.96)
     nokogiri (1.5.9)
@@ -414,9 +448,19 @@ GEM
     uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
     unicorn (5.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    untied-publisher (0.0.7.pre3)
+      activerecord
+      amqp
+      bunny (>= 0.0.9.pre13)
+      configurable
+      json
+      representable
     useragent (0.6.0)
     uuidtools (2.1.3)
     valium (0.5.0)
@@ -505,8 +549,10 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier (~> 2)
   unicorn
+  untied-publisher (~> 0.0.7.pre3)
   useragent
   valium
+  vis_client!
   webmock
   whenever
   yajl-ruby
@@ -515,4 +561,4 @@ RUBY VERSION
    ruby 1.9.3p551
 
 BUNDLED WITH
-   1.13.5
+   1.14.6

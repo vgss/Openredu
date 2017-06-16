@@ -47,8 +47,8 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'route_translator'
 gem 'useragent'
-#gem 'vis_client', git: 'git://github.com/redu/vis_client.git',
-  #branch: 'ruby-1-9-3'
+gem 'vis_client', git: 'https://github.com/Openredu/vis_client.git',
+  branch: 'ruby-1-9-3'
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
 gem 'untied-publisher', '~> 0.0.7.pre3'
