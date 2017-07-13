@@ -119,9 +119,6 @@ GEM
       amq-protocol (~> 1.9)
       eventmachine
     arel (3.0.3)
-    asset_sync (0.5.4)
-      activemodel
-      fog
     authlogic (3.3.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
@@ -475,8 +472,6 @@ GEM
     whenever (0.8.2)
     xml-simple (1.1.2)
     yajl-ruby (1.1.0)
-    zencoder (2.4.4)
-      multi_json
 
 PLATFORMS
   ruby
@@ -520,6 +515,9 @@ DEPENDENCIES
   kaminari!
   mime-types
   mysql2 (~> 0.3.21)
+  net-scp (= 1.0.4)
+  net-ssh (= 2.9.4)
+  net-ssh-gateway (= 1.3.0)
   newrelic_rpm
   no_peeping_toms!
   oauth-plugin (~> 0.4.0)
@@ -562,7 +560,6 @@ DEPENDENCIES
   webmock
   whenever
   yajl-ruby
-  zencoder
 
 RUBY VERSION
    ruby 1.9.3p551
