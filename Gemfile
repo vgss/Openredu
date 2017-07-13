@@ -68,8 +68,12 @@ gem 'truncate_html'
 gem 'rest-client'
 
 gem 'capistrano'
-gem 'rubber'
+gem 'rubber', '3.2.1'
 gem 'unicorn'
+gem 'net-ssh', '2.9.4'
+gem 'net-scp', '1.0.4'
+gem 'fog', '1.9.0'
+gem 'net-ssh-gateway', '1.3.0'
 
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'

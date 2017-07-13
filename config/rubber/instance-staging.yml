@@ -37,7 +37,7 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: solr_sunspot
     options: {}
-  instance_id: staging
+  instance_id: demo
   image_type:
   image_id:
   security_groups:

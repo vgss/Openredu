@@ -54,8 +54,33 @@ Redu::Application.configure do
   config.url = "staging.openredu.com"
 
   config.action_mailer.default_url_options = { :host => config.url }
+  config.action_mailer.asset_host = "http://#{config.url}"
+
+  #settings SMTP
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 465,
+    domain: "cin.ufpe.br",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "openredu@cin.ufpe.br",
+    password: "3MH7diuFRKhhuFjhZgBK6Q==",
+    openssl_verify_mode: "none"
+  }
+
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # Configurações de VisClient
+  config.vis_client = {
+    :url => "http://localhost:4000/hierarchy_notifications.json",
+    :host => "http://localhost:4000"
+  }
+
+  config.vis = {
+    :subject_activities => "http://localhost:4000/subjects/activities.json",
+    :lecture_participation => "http://localhost:4000/lectures/participation.json",
+    :students_participation => "http://localhost:4000/user_spaces/participation.json"
+  }
 end
