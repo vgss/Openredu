@@ -1,8 +1,6 @@
 development:
   database: redu_development
-  databases:
-    vis:
-      database: vis_development
+
 test:
   database: redu_test
   
@@ -14,6 +12,3 @@ staging:
 
 production:
   database: redu_production
-  databases:
-    vis:
-      database: vis_production
