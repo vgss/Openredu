@@ -37,6 +37,9 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: solr_sunspot
     options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: delayed_job
+    options: {}
   instance_id: demo
   image_type:
   image_id:
