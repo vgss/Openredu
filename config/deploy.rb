@@ -80,6 +80,24 @@ namespace :deploy do
   end
 end
 
+namespace :deploy do
+  desc 'Show deployed revision'
+    task :running_version, :roles => :app do
+      run "cat #{current_path}/REVISION"
+    end
+  desc 'Write deployed revision on REVISION file'
+    task :write_version, :roles => :app do
+      date = `date`
+      branch = `git status | head -n 1`
+      commit = `git rev-parse HEAD`
+      deploy_info = date + branch + commit
+      IO.write("REVISION", deploy_info)
+      deployed_version = IO.read("REVISION").to_s
+      rsudo "echo #{date} > #{current_path}/REVISION && echo #{branch} >> #{current_path}/REVISION && echo #{commit} >> #{current_path}/REVISION"
+    end
+end
+
+
 # load in the deploy scripts installed by vulcanize for each rubber module
 Dir["#{File.dirname(__FILE__)}/rubber/deploy-*.rb"].sort.each do |deploy_file|
   load deploy_file
