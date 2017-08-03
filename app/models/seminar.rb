@@ -14,25 +14,26 @@ class Seminar < ActiveRecord::Base
   has_one :lecture, :as => :lectureable
 
   # Maquina de estados do processo de conversão
-  aasm_column :state
+  aasm column: :state do
 
-  aasm_initial_state :waiting
+    initial_state :waiting
 
-  aasm_state :waiting
-  aasm_state :converting, :enter => :transcode
-  aasm_state :converted
-  aasm_state :failed
+    state :waiting
+    state :converting, :enter => :transcode
+    state :converted
+    state :failed
 
-  aasm_event :convert do
-    transitions :to => :converting, :from => [:waiting]
-  end
+    event :convert do
+      transitions :to => :converting, :from => [:waiting]
+    end
 
-  aasm_event :ready do
-    transitions :to => :converted, :from => [:waiting, :converting]
-  end
+    event :ready do
+      transitions :to => :converted, :from => [:waiting, :converting]
+    end
 
-  aasm_event :fail do
-    transitions :to => :failed, :from => [:converting]
+    event :fail do
+      transitions :to => :failed, :from => [:converting]
+    end
   end
 
   # Habilita diferentes validações dependendo do tipo

@@ -4,17 +4,15 @@ ruby "1.9.3"
 
 gem 'aasm'
 gem 'premailer-rails'
-gem 'classy_enum'
+gem 'classy_enum', '~> 3.2'
 gem 'activerecord-import'
 gem 'acts_as_tree', '~> 0.1.1'
-gem 'acts-as-taggable-on', git: 'git://github.com/mbleigh/acts-as-taggable-on.git'
+gem 'acts-as-taggable-on'
 gem 'ajaxful_rating',
   git: 'git://github.com/edgarjs/ajaxful-rating.git',
   branch: 'rails3'
 gem 'authlogic'
 gem 'awesome_nested_fields'
-gem 'aws-s3', require: 'aws/s3'
-gem 'aws-sdk'
 gem 'bundler', '~> 1.2'
 gem 'cancan', '~> 1.6.7'
 gem 'ckeditor', '3.4.2.pre'
@@ -31,7 +29,7 @@ gem 'factory_girl_rails'
 gem "redu-has_friends", "~> 1.0", require: "has_friends"
 gem 'invitable', git: 'git://github.com/OpenRedu/invitable.git'
 gem 'jquery-rails', '>= 1.0.12'
-gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git'
+gem 'kaminari', '~> 0.17'
 gem 'mime-types'
 gem "mysql2", '~> 0.3.21'
 gem 'omniauth'
@@ -43,10 +41,10 @@ gem 'remotipart', '~> 1.0'
 gem 'scribd_fu', git: 'git://github.com/guiocavalcanti/scribd_fu.git',
   branch: 'without-scape'
 gem 'simple-navigation', git: 'git://github.com/andi/simple-navigation.git'
-gem 'sunspot_rails'
+gem 'sunspot_rails', '2.0'
 gem 'route_translator'
 gem 'useragent'
-gem 'vis_client', git: 'git://github.com/redu/vis_client.git',
+gem 'vis_client', git: 'git://github.com/openredu/vis_client.git',
   branch: 'ruby-1-9-3'
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
@@ -62,7 +60,7 @@ gem 'dalli'
 gem 'simple-private-messages', '0.0.0', # A gem não possui .gemspec
   git: 'git://github.com/jongilbraith/simple-private-messages.git'
 gem 'rails_autolink'
-gem 'rubyzip', require: 'zip/zip'
+gem 'rubyzip', '~> 0.9', require: 'zip/zip'
 gem 'truncate_html'
 gem 'rest-client'
 
@@ -72,12 +70,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'roar-rails'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2'
+  gem 'sass-rails',   '3.2'
   gem 'compass-rails'
   gem 'therubyracer', platforms: :ruby
-  gem 'uglifier', '~> 2'
-  gem 'asset_sync'
-  gem 'turbo-sprockets-rails3'
+  gem 'uglifier', '2.1'
+  gem 'turbo-sprockets-rails3', '0.3.6'
 end
 
 # Gems específicos de algum ambiente
@@ -86,7 +83,7 @@ group :development, :test do
   gem 'no_peeping_toms', git: 'git://github.com/patmaddox/no-peeping-toms.git'
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', '2.0'
 end
 
 group :test do

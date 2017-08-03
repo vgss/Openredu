@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module Vis
   module TeacherParticipationRepresenter
-    include Roar::Representer::JSON
+    include ROAR::JSON
 
     property :lectures_created
     property :posts

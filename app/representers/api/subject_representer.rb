@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module Api
   module SubjectRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::Feature::Hypermedia
+    include ROAR::JSON
+    include ROAR::Feature::Hypermedia
 
     property :id
     property :name

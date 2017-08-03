@@ -16,23 +16,24 @@ class Plan < ActiveRecord::Base
 
   attr_protected :state, :billable_audit
 
-  aasm_column :state
-  aasm_initial_state :active
+  aasm column: :state do
+    initial_state :active
 
-  aasm_state :active
-  aasm_state :blocked, :enter => [:send_blocked_notice]
-  aasm_state :migrated
+    state :active
+    state :blocked, :enter => [:send_blocked_notice]
+    state :migrated
 
-  aasm_event :block do
-    transitions :to => :blocked, :from => [:active]
-  end
+    event :block do
+      transitions :to => :blocked, :from => [:active]
+    end
 
-  aasm_event :activate do
-    transitions :to => :active, :from => [:blocked, :active]
-  end
+    event :activate do
+      transitions :to => :active, :from => [:blocked, :active]
+    end
 
-  aasm_event :migrate do
-    transitions :to => :migrated, :from => [:active]
+    event :migrate do
+      transitions :to => :migrated, :from => [:active]
+    end
   end
 
   def self.from_preset(key, type="PackagePlan")

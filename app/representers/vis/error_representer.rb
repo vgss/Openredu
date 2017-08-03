@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module Vis
   module ErrorRepresenter
-    include Roar::Representer::JSON
+    include ROAR::JSON
 
     property :error
 

@@ -242,7 +242,7 @@ module Redu
 
     # Seta locale defaul para pt-br
     config.i18n.default_locale = :"pt-BR"
-    I18n.available_locales = [config.i18n.default_locale]
+    I18n.available_locales = [config.i18n.default_locale, :en]
     I18n.locale = config.i18n.default_locale
 
 

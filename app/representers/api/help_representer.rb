@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module Api
   module HelpRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::Feature::Hypermedia
+    include ROAR::JSON
+    include ROAR::Feature::Hypermedia
     include StatusRepresenter
 
     include Api::BreadcrumbLinks

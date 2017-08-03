@@ -1,8 +1,20 @@
 development:
-  database: redu_development
+  sessions:
+    default:
+      database: redu_development
+      hosts:
+        - localhost:27017
 
 test:
-  database: redu_test
-  
+  sessions:
+    default:
+      database: redu_development
+      hosts:
+        - localhost:27017
+
 production:
-  database: redu_production
+  sessions:
+    default:
+      database: redu_development
+      hosts:
+        - localhost:27017

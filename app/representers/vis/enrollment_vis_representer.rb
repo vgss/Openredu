@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module Vis
   module EnrollmentVisRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::Feature::Hypermedia
+    include ROAR::JSON
+    include ROAR::Feature::Hypermedia
 
     property :user_id
     property :subject_id

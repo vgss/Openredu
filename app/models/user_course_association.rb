@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class UserCourseAssociation < CourseEnrollment
+  include ClassyEnum::ActiveRecord
+  include AASM
+
   belongs_to :user
   classy_enum_attr :role, :default => 'member'
   has_many :logs, :as => :logeable, :order => "created_at DESC",
@@ -32,39 +35,38 @@ class UserCourseAssociation < CourseEnrollment
       limit(limit)
   }
 
-  # Máquina de estados para moderação das dos usuários nos courses.
-  aasm_column :state
+  aasm :column => :state do
+    initial_state :waiting
 
-  aasm_initial_state :waiting
+    state :waiting, :enter => :send_pending_moderation_notification
+    state :invited, :enter => :send_course_invitation_notification
+    state :approved, :enter => :create_hierarchy_associations
+    state :rejected
+    state :failed
 
-  aasm_state :waiting, :enter => :send_pending_moderation_notification
-  aasm_state :invited, :enter => :send_course_invitation_notification
-  aasm_state :approved, :enter => :create_hierarchy_associations
-  aasm_state :rejected
-  aasm_state :failed
+    event :invite do
+      transitions :to => :invited, :from => [:waiting]
+    end
 
-  aasm_event :invite do
-    transitions :to => :invited, :from => [:waiting]
-  end
+    event :approve do
+      transitions :to => :approved, :from => [:waiting]
+    end
 
-  aasm_event :approve do
-    transitions :to => :approved, :from => [:waiting]
-  end
+    event :accept do
+      transitions :to => :approved, :from => [:invited]
+    end
 
-  aasm_event :accept do
-    transitions :to => :approved, :from => [:invited]
-  end
+    event :reject do
+      transitions :to => :rejected, :from => [:waiting]
+    end
 
-  aasm_event :reject do
-    transitions :to => :rejected, :from => [:waiting]
-  end
+    event :deny do
+      transitions :to => :rejected, :from => [:invited]
+    end
 
-  aasm_event :deny do
-    transitions :to => :rejected, :from => [:invited]
-  end
-
-  aasm_event :fail do
-    transitions :to => :failed, :from => [:waiting]
+    event :fail do
+      transitions :to => :failed, :from => [:waiting]
+    end
   end
 
   validates_uniqueness_of :user_id, :scope => [:course_id, :type]

@@ -2,7 +2,7 @@
 module Untied
   module UserRepresenter
     # Utilizado para serializar modelo de User enviado pelo Untied
-    include Roar::Representer::JSON
+    include Roar::JSON
     include Untied::HasAttachmentRepresenter
 
     self.representation_wrap = true

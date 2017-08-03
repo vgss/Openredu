@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class UserSpaceAssociation < ActiveRecord::Base
+  include ClassyEnum::ActiveRecord
+
   # Em alguns casos o enrollment é chamado utilizando o gem activerecord-import
   # por questões de otimização. Este gem desabilita qualquer tipo de callback
   # cuidado ao adicionar callbacks a esta entidade.

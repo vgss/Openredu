@@ -14,26 +14,27 @@ class Result < ActiveRecord::Base
     order('grade DESC').limit(n)
   }
 
-  aasm_column :state
-  aasm_initial_state :waiting
+  aasm column: :state do
+    initial_state :waiting
 
-  aasm_state :waiting
-  aasm_state :started, enter: lambda { |r|
-    r.update_attributes({started_at: Time.zone.now })
-  }
-  aasm_state :finalized, enter: lambda { |r|
-    r.update_attributes({finalized_at: Time.zone.now})
-    r.assign_dangling_choices
-    r.update_attributes({ grade: r.calculate_grade,
-                          duration: r.calculate_duration })
-  }
+    state :waiting
+    state :started, enter: lambda { |r|
+      r.update_attributes({started_at: Time.zone.now })
+    }
+    state :finalized, enter: lambda { |r|
+      r.update_attributes({finalized_at: Time.zone.now})
+      r.assign_dangling_choices
+      r.update_attributes({ grade: r.calculate_grade,
+                            duration: r.calculate_duration })
+    }
 
-  aasm_event :start do
-    transitions to: :started, from: :waiting
-  end
+    event :start do
+      transitions to: :started, from: :waiting
+    end
 
-  aasm_event :finalize do
-    transitions to: :finalized, from: :started
+    event :finalize do
+      transitions to: :finalized, from: :started
+    end
   end
 
   validates_uniqueness_of :user_id, scope: :exercise_id

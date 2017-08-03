@@ -9,37 +9,38 @@ class UserCourseInvitation < CourseEnrollment
 
   scope :invited, -> { where(state: 'invited')}
   scope :with_email, lambda { |email| where( :email => email.to_s) }
-  scope :invitations_approved, -> { where(state: 'approved') } 
+  scope :invitations_approved, -> { where(state: 'approved') }
 
-  aasm_column :state
+  aasm column: :state do
 
-  aasm_initial_state :waiting
-  aasm_state :waiting
-  # Envia e-mail avisando que ele foi convidado
-  aasm_state :invited, :enter => :send_external_user_course_invitation
-  # Convida o usuário (já dentro do Redu) para o curso
-  aasm_state :approved, :enter => :create_user_course_association,
-    :after_enter => Proc.new { |uci| uci.destroy }
-  aasm_state :rejected
-  aasm_state :failed
+    initial_state :waiting
+    state :waiting
+    # Envia e-mail avisando que ele foi convidado
+    state :invited, :enter => :send_external_user_course_invitation
+    # Convida o usuário (já dentro do Redu) para o curso
+    state :approved, :enter => :create_user_course_association,
+      :after_enter => Proc.new { |uci| uci.destroy }
+    state :rejected
+    state :failed
 
-  aasm_event :invite do
-    transitions :to => :invited, :from => [:waiting]
-  end
+    event :invite do
+      transitions :to => :invited, :from => [:waiting]
+    end
 
-  # Necessita que um usuário seja setado ANTES de chamar este método;
-  # caso contrário, falha silenciosamente
-  aasm_event :accept do
-    transitions :to => :approved, :from => [:invited],
-      :guard => Proc.new { |uci| uci.user }
-  end
+    # Necessita que um usuário seja setado ANTES de chamar este método;
+    # caso contrário, falha silenciosamente
+    event :accept do
+      transitions :to => :approved, :from => [:invited],
+        :guard => Proc.new { |uci| uci.user }
+    end
 
-  aasm_event :deny do
-    transitions :to => :rejected, :from => [:invited]
-  end
+    event :deny do
+      transitions :to => :rejected, :from => [:invited]
+    end
 
-  aasm_event :fail do
-    transitions :to => :failed, :from => [:invited]
+    event :fail do
+      transitions :to => :failed, :from => [:invited]
+    end
   end
 
   validates_presence_of :token, :email, :course

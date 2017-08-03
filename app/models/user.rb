@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   include StatusService::BaseModelAdditions
   include StatusService::UserAdditions::ModelAdditions
   include DestroySoon::ModelAdditions
+  include ClassyEnum::ActiveRecord
 
   # Valida a resposta ao captcha
   attr_writer :enable_humanizer

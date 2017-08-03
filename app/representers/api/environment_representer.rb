@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module Api
   module EnvironmentRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::Feature::Hypermedia
+    include Roar::JSON
+    include Roar::Feature::Hypermedia
 
     include Api::ThumbnailCollection
 

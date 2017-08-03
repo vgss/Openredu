@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module Api
   module StatusRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::Feature::Hypermedia
+    include ROAR::JSON
+    include ROAR::Feature::Hypermedia
 
     property :id
     property :created_at

@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class UserEnvironmentAssociation < ActiveRecord::Base
+  include ClassyEnum::ActiveRecord
+
   belongs_to :user
   belongs_to :environment
   classy_enum_attr :role, :default => 'member'

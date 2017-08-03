@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class TourSetting < UserSetting
+  include ClassyEnum::ActiveRecord
   classy_enum_attr :view_mural, :enum => 'Privacy', :default => 'friends'
   serialize :explored
   attr_protected :explored
