@@ -20,8 +20,8 @@ Redu::Application.configure do
   # just comment this out and Rails will serve the files
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
-
+  # config.logger = Logger.new("#{Rails.root}/log/mytest.log")
+  # config.logger.level = 0
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
@@ -74,13 +74,12 @@ Redu::Application.configure do
 
   # Configurações de VisClient
   config.vis_client = {
-    :url => "http://localhost:4000/hierarchy_notifications.json",
-    :host => "http://localhost:4000"
+    :url => "http://vis.openredu.com/hierarchy_notifications.json",
   }
 
   config.vis = {
-    :subject_activities => "http://localhost:4000/subjects/activities.json",
-    :lecture_participation => "http://localhost:4000/lectures/participation.json",
-    :students_participation => "http://localhost:4000/user_spaces/participation.json"
+    :subject_activities => "http://vis.openredu.com/subjects/activities.json",
+    :lecture_participation => "http://vis.openredu.com/lectures/participation.json",
+    :students_participation => "http://vis.openredu.com/user_spaces/participation.json"
   }
 end
