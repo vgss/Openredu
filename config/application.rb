@@ -71,7 +71,7 @@ module Redu
     config.desc_char_limit = 200
 
     config.session_store = :active_record_store
-    config.representer.default_url_options = {:host => "127.0.0.1:3000"}
+    config.representer.default_url_options = {:host => "stage.openredu.com"}
 
     # ActionMailer
     config.action_mailer.raise_delivery_errors = true
