@@ -161,7 +161,7 @@ class LecturesController < BaseController
             response = nil
             begin
               response = RestClient.post(
-                "#{LIVREDOC_URL}/api/v1/documents",
+                "http://production.livredoc.openredu.com/api/v1/documents",
                 {
                   :document_id => @lecture.lectureable.id,
                   :file => File.new(@lecture.lectureable.attachment.path)
@@ -285,6 +285,6 @@ class LecturesController < BaseController
   end
 
   def livredoc_header
-    {:Authorization => "Token #{ENV['LIVREDOC_TOKEN']}"}
+    {:Authorization => "Token openredu"}
   end
 end
