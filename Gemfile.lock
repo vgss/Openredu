@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/OpenRedu/invitable.git
+  remote: https://github.com/OpenRedu/invitable.git
   revision: 8f56a767909ab59220964304fb78364f49a42315
   specs:
     invitable (0.0.7)
@@ -13,22 +13,7 @@ GIT
       activesupport (>= 2.3.2)
 
 GIT
-  remote: git://github.com/edgarjs/ajaxful-rating.git
-  revision: f22e2c38d601f8279e959fbe9a578b2314235505
-  branch: rails3
-  specs:
-    ajaxful_rating (3.0.0.beta8)
-
-GIT
-  remote: git://github.com/guiocavalcanti/scribd_fu.git
-  revision: 422926986f993bf4d72fcaa981dea221ecc86641
-  branch: without-scape
-  specs:
-    scribd_fu (2.0.11)
-      rscribd
-
-GIT
-  remote: git://github.com/jongilbraith/simple-private-messages.git
+  remote: https://github.com/jongilbraith/simple-private-messages.git
   revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
   specs:
     simple-private-messages (0.0.0)
@@ -58,7 +43,7 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
-  remote: git://github.com/redu/analytics.git
+  remote: https://github.com/redu/analytics.git
   revision: a777409d456f6e14894eac8e011f7046a14a1ae1
   specs:
     redu_analytics (0.0.3)
@@ -176,6 +161,10 @@ GEM
     diffy (3.2.0)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     dynamic_form (1.1.4)
     em-http-request (1.1.5)
       addressable (>= 2.3.4)
@@ -460,6 +449,7 @@ DEPENDENCIES
   deep_cloneable
   delayed_job_mongoid
   destroy_soon
+  dotenv-rails
   dynamic_form
   em-http-request
   eventmachine
