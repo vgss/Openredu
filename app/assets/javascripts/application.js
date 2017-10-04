@@ -29,8 +29,8 @@
 //= require bootstrap-redu-search-form
 // Somente para a nav global: fim
 //= require search
-//= require ckeditor/ckeditor
-
+//= require ckeditor/init
+//= require pdf-n-worker.min
 
 jQuery(function(){
 

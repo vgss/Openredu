@@ -28,12 +28,6 @@ module Redu
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Brasilia'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-    config.i18n.load_path += Dir[ Rails.root.join("lang", "ui", '*.{rb,yml}').to_s ]
-    config.i18n.default_locale = "pt-BR"
-
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
@@ -133,9 +127,6 @@ module Redu
       :default_url => ":class/:attachment/:style/missing.png"
     }
 
-    # Usado pelo WYSIWYG CKEditor
-    config.autoload_paths << "#{config.root}/app/models/ckeditor"
-
     # Classes auxiliares para Search
     config.autoload_paths << "#{config.root}/app/models/search"
 
@@ -169,6 +160,9 @@ module Redu
 
     # Adapters
     config.autoload_paths << "#{config.root}/app/adapters"
+
+    #ckeditor
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     # Observers
     unless File.basename($0) == 'rake'
@@ -241,10 +235,16 @@ module Redu
       }
     }
 
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[ Rails.root.join("lang", "ui", '*.{rb,yml}').to_s ]
+
     # Seta locale defaul para pt-br
     config.i18n.default_locale = :"pt-BR"
-    I18n.locale = config.i18n.default_locale
     I18n.available_locales = [config.i18n.default_locale]
+    I18n.locale = config.i18n.default_locale
+
 
     # Quantidade de resultados da busca exibidos por páginas
     config.search_results_per_page = 10
@@ -254,19 +254,16 @@ module Redu
 
     config.assets.enabled = true
 
-    # Caminho para os assets do CKEditor
-    config.assets.ckeditor_path = "#{config.assets.prefix}/ckeditor"
-
     # Layout com bootstrap
     config.assets.precompile += %w(new_application.js friend-invitation.js basic.js landing.js mobile.js status_show.js)
     config.assets.precompile += %w(bootstrap-redu.min.css new_application.css basic.css mobile.css authoring-page.css)
     config.assets.precompile += %w(maintenance.css)
 
     # Layout sem bootstrap
-    config.assets.precompile += %w(ie.js outdated_browser.js ckeditor.js jquery.maskedinput.js canvas.js chart.js jwplayer.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
+    config.assets.precompile += %w(ie.js outdated_browser.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
     config.assets.precompile += %w(ie.css icons.redu.css outdated_browser.css preview-course-old.css page.css cold.css clean.css print.css email.css new_wall.css)
 
-    # CKEditor
-    config.assets.precompile += %w(ckeditor/*)
+    # Assets da nova landing page
+    config.assets.precompile += %w(landing.css jquery.js rails.js)
   end
 end

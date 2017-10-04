@@ -1,6 +1,9 @@
 # -*- encoding : utf-8 -*-
 Redu::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   localized do
+    get 'getpdf', to: 'lectures#getpdf'
     match '/oauth/token',         :to => 'oauth#token',         :as => :token
     match '/oauth/access_token',  :to => 'oauth#access_token',  :as => :access_token
     match '/oauth/request_token', :to => 'oauth#request_token', :as => :request_token
@@ -45,6 +48,9 @@ Redu::Application.routes.draw do
     get '/recover_username_password' => 'users#recover_username_password',
       :as => :recover_username_password
     post '/recover_password' => 'users#recover_password', :as => :recover_password
+    get '/confirm_recover_password/:token',
+     to: 'users#confirm_recover_password',
+     as: :confirm_recover_password
 
     match '/resend_activation' => 'users#resend_activation',
       :as => :resend_activation
