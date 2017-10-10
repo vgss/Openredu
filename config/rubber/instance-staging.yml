@@ -1,7 +1,7 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
   name: staging
-  domain: redu-util.cin.ufpe.br
+  domain: openredu.com
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
     name: app
@@ -40,22 +40,22 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: delayed_job
     options: {}
-  instance_id: demo
-  image_type:
-  image_id:
+  instance_id: staging
+  image_type: 
+  image_id: 
   security_groups:
   - default
   - web
-  zone:
-  network:
-  gateway:
-  external_host:
+  zone: 
+  network: 
+  gateway: 
+  external_host: 
   external_ip: 172.21.6.103
-  internal_host:
+  internal_host: 
   internal_ip: 172.21.6.103
   provider: generic
   platform: linux
-  root_device_type:
+  root_device_type: 
 - volumes: {}
   static_ips: {}
   vpc: {}

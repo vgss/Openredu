@@ -14,11 +14,11 @@ admin_email: "yhsmsb@cin.ufpe.br"
 # web_tools_password: sekret
 
 # REQUIRED: The timezone the server should be in
-timezone: US/Eastern
+timezone: Brazil/East
 
 # REQUIRED: the domain all the instances should be associated with
 #
-domain: redu-util.cin.ufpe.br
+domain: openredu.com
 
 # OPTIONAL: See rubber-dns.yml for dns configuration
 # This lets rubber update a dynamic dns service with the instance alias

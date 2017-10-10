@@ -7,9 +7,7 @@ CKEDITOR.editorConfig = function( config )
 {
   config.PreserveSessionOnFileBrowser = true;
 
-  config.language = 'pt-BR';
-
-  config.removePlugins = 'elementspath';
+  config.language = 'en';
 
   config.extraPlugins = 'autogrow';
 
@@ -49,12 +47,11 @@ CKEDITOR.editorConfig = function( config )
   config.toolbar = 'mini'
 
   config.toolbar_mini = [
-    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
-    { name: 'usability', items: [ 'Maximize' ] },
+    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
     { name: 'styles', items: [ 'Font', 'FontSize' ] },
     { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-    { name: 'insert', items: [ 'Image', 'Link', 'Table', 'HorizontalRule', 'SpecialChar' ] },
-    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] }
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+    { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
   ];
 
   config.toolbar_Easy = [
