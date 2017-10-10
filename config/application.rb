@@ -71,7 +71,7 @@ module Redu
     config.desc_char_limit = 200
 
     config.session_store = :active_record_store
-    config.representer.default_url_options = {:host => "127.0.0.1:3000"}
+    config.representer.default_url_options = {:host => "stage.openredu.com"}
 
     # ActionMailer
     config.action_mailer.raise_delivery_errors = true
@@ -228,8 +228,8 @@ module Redu
     # Configuração da aplicação em omniauth providers
     config.omniauth = {
       :facebook => {
-        :app_id => ENV['FACEBOOK_APP_ID'],
-        :app_secret => ENV['FACEBOOK_APP_SECRET'],
+        :app_id => '358542677860803',
+        :app_secret => 'dda633af5bd6e9d64820d47bf6ce14a7',
         :scope => 'public_profile, email',
         :info_fields => 'email,first_name,last_name'
       }

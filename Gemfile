@@ -36,12 +36,12 @@ gem 'paperclip', '~> 2.7.5'
 gem 'rails', '~> 3.2.13'
 gem "rake", "~> 10.0.4"
 gem 'remotipart', '~> 1.0'
-gem 'simple-navigation', git: 'https://github.com/andi/simple-navigation.git'
+gem 'simple-navigation', git: 'https://github.com/andi/simple-navigation.git', ref: '04315d6'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'route_translator'
 gem 'useragent'
-gem 'vis_client', git: 'https://github.com/redu/vis_client.git',
-  branch: 'ruby-1-9-3'
+gem 'vis_client', git: 'https://github.com/Openredu/vis_client.git', branch: 'ruby-1-9-3'
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
 gem 'untied-publisher', '~> 0.0.7.pre3'
@@ -61,6 +61,14 @@ gem 'truncate_html'
 gem 'rest-client'
 gem 'dotenv-rails'
 
+gem 'capistrano'
+gem 'rubber', '3.2.1'
+gem 'unicorn'
+gem 'net-ssh', '2.9.4'
+gem 'net-scp', '1.0.4'
+gem 'fog', '1.9.0'
+gem 'net-ssh-gateway', '1.3.0'
+
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'
 gem 'rack-cors', require: 'rack/cors'
@@ -71,7 +79,6 @@ group :assets do
   gem 'compass-rails'
   gem 'therubyracer', platforms: :ruby
   gem 'uglifier', '~> 2'
-  gem 'asset_sync'
   gem 'turbo-sprockets-rails3'
 end
 
@@ -81,7 +88,7 @@ group :development, :test do
   gem 'no_peeping_toms', git: 'https://github.com/patmaddox/no-peeping-toms.git'
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
-  gem 'sunspot_solr'
+  gem 'debugger'
 end
 
 group :test do
@@ -103,6 +110,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-group :debug do
-  gem 'debugger'
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
 end

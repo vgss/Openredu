@@ -10,12 +10,10 @@ Redu::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Use Memcached as cache store (default config from ey)
-  ## parse the memcached.yml
-  memcached_config = YAML.load_file(Rails.root.join('config/memcached.yml'))
-  memcached_hosts = memcached_config['defaults']['servers']
-  ## pass the servers to dalli setup
-  config.cache_store = :dalli_store, *memcached_hosts
+  dalli_config = Rails.root.join('config','dalli.rb')
+  if File.exists?(dalli_config)
+    require dalli_config; include ::Rubber::Dalli::Config
+  end
 
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"

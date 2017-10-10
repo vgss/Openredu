@@ -4,5 +4,11 @@ development:
 test:
   database: redu_test
   
+staging:
+  database: redu_staging
+  databases:
+    vis:
+      database: vis_staging
+
 production:
   database: redu_production
