@@ -1,30 +1,30 @@
 development:
   adapter: mysql2
   username: root
-  password:
+  password: admin
   database: redu_development
   host: localhost
 production:
   adapter: mysql2
-  username: root
-  password:
-  database: redu_production
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWD'] %>
+  database: <%= ENV['DATABASE'] %>
   host: localhost
 performance:
   adapter: mysql2
   username: root
-  password:
+  password: admin
   database: redu_performance
   host: localhost
 staging:
   adapter: mysql2
-  username: root
-  password:
-  database: redu_staging
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWD'] %>
+  database: <%= ENV['DATABASE'] %>
   host: localhost
 test:
   adapter: mysql2
   username: root
-  password:
+  password: admin
   database: redu_test
   host: localhost
