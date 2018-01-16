@@ -260,10 +260,10 @@ module Redu
     # Layout com bootstrap
     config.assets.precompile += %w(new_application.js friend-invitation.js basic.js landing.js mobile.js status_show.js)
     config.assets.precompile += %w(bootstrap-redu.min.css new_application.css basic.css mobile.css authoring-page.css)
-    config.assets.precompile += %w(maintenance.css)
+    config.assets.precompile += %w(maintenance.css chat.css)
 
     # Layout sem bootstrap
-    config.assets.precompile += %w(ie.js outdated_browser.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
+    config.assets.precompile += %w(ie.js outdated_browser.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js chat.js chat.jquery.js)
     config.assets.precompile += %w(ie.css icons.redu.css outdated_browser.css preview-course-old.css page.css cold.css clean.css print.css email.css new_wall.css)
 
     # Assets da nova landing page
