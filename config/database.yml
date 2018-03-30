@@ -26,6 +26,7 @@ staging:
   database: redu_staging
   host: db
 
+
 test:
   adapter: mysql2
   username: root

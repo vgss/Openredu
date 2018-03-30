@@ -64,18 +64,25 @@ module Redu
     config.description = "Rede Social Educacional"
     config.email = "contato@openredu.com"
 
+    # Nome e URL do app
+    config.url = ENV['APP_URL']
+
     # Paginação
     config.items_per_page = 10
 
     # Máximo de caracteres p/ descrição
     config.desc_char_limit = 200
 
+    config.faye_url = ENV['FAYE_URL']
+    config.faye_js_url = "#{config.faye_url}/client.js"
+
     config.session_store = :active_record_store
-    config.representer.default_url_options = {:host => "127.0.0.1:3000"}
+    config.representer.default_url_options = {:host => ENV['API_URL']}
 
     # ActionMailer
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :test
+    config.action_mailer.default_url_options = { :host => config.url }
 
     config.paperclip = {
       :storage => :filesystem,
@@ -207,8 +214,8 @@ module Redu
     config.exceptions_app = self.routes
 
     config.vis_data_authentication = {
-      :password => "NyugAkSoP",
-      :username => "api-team"
+      :password => ENV['VIS_PASS'],
+      :username => ENV['VIS_USER']
     }
 
     config.redu_services = {}
@@ -225,6 +232,18 @@ module Redu
       :url => "http://openredu.org/"
     }
 
+    # Configurações de VisClient
+    config.vis_client = {
+      :url => ENV['VIS_HOST'] + "/hierarchy_notifications.json",
+      :host => ENV['VIS_HOST']
+    }
+
+    config.vis = {
+      :subject_activities => ENV['VIS_HOST'] + "/subjects/activities.json",
+      :lecture_participation => ENV['VIS_HOST'] + "/lectures/participation.json",
+      :students_participation =>  ENV['VIS_HOST'] + "/user_spaces/participation.json"
+    }
+
     # Configuração da aplicação em omniauth providers
     config.omniauth = {
       :facebook => {
@@ -233,6 +252,18 @@ module Redu
         :scope => 'public_profile, email',
         :info_fields => 'email,first_name,last_name'
       }
+    }
+
+    # SMTP settings
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 465,
+      domain: "cin.ufpe.br",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV['SMTP_USER'],
+      password: ENV['SMTP_PASSWD'],
+      openssl_verify_mode: "none"
     }
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
@@ -260,8 +291,8 @@ module Redu
     config.assets.precompile += %w(maintenance.css)
 
     # Layout sem bootstrap
-    config.assets.precompile += %w(ie.js outdated_browser.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
-    config.assets.precompile += %w(ie.css icons.redu.css outdated_browser.css preview-course-old.css page.css cold.css clean.css print.css email.css new_wall.css)
+    config.assets.precompile += %w(ie.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
+    config.assets.precompile += %w(ie.css icons.redu.css preview-course-old.css page.css cold.css clean.css print.css email.css new_wall.css)
 
     # Assets da nova landing page
     config.assets.precompile += %w(landing.css jquery.js rails.js)
