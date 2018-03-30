@@ -31,3 +31,4 @@ solr/pids/*
 .sass-cache/
 .env.staging
 .env.production
+.env

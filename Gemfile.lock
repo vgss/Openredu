@@ -459,7 +459,6 @@ DEPENDENCIES
   rubyzip
   sass-rails (~> 3.2)
   shoulda-matchers (~> 1)
-
   simple-navigation (~> 3)
   simple-private-messages (= 0.0.0)!
   simple_acts_as_list
