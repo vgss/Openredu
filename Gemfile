@@ -54,8 +54,6 @@ gem 'redu_analytics', git: 'https://github.com/redu/analytics.git'
 gem 'humanizer'
 gem 'valium'
 gem 'dalli'
-gem 'prawn'
-gem 'prawn-table'
 gem 'simple-private-messages', '0.0.0', # A gem não possui .gemspec
   git: 'https://github.com/jongilbraith/simple-private-messages.git'
 gem 'rails_autolink'
@@ -64,6 +62,9 @@ gem 'truncate_html'
 gem 'rest-client'
 gem 'dotenv-rails'
 gem 'puma'
+gem 'prawn'
+gem 'prawn-table'
+
 
 # Gems específicos para a API
 gem 'oauth-plugin', '~> 0.4.0'

@@ -103,7 +103,10 @@ Redu::Application.routes.draw do
    end
 
     resources :exercises, :only => :show do
-      resources :results, :only => [:index, :create, :update, :edit]
+      resources :results, :only => [:index, :create, :update, :edit] do
+        get :download
+      end
+      
       resources :questions, :only => :show do
         resources :choices, :only => [:create, :update]
       end
