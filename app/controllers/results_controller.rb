@@ -11,7 +11,7 @@ class ResultsController < BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to exercise_question_path(@exercise, @exercise.questions.first)
+        redirect_to exercise_question_path(@exercise, @exercise.questions.first(:conditions => { :position => 1 }))
       end
     end
   end
