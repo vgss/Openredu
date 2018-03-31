@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby "2.1.2"
 
 gem 'aasm'
 gem 'premailer-rails'
@@ -34,7 +34,7 @@ gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'paperclip', '~> 2.7.5'
 gem 'rails', '~> 3.2.13'
-gem "rake", "~> 10.0.4"
+gem "rake", "10.1.0"
 gem 'remotipart', '~> 1.0'
 gem 'simple-navigation', '~> 3'
 gem 'sunspot_rails'
@@ -54,6 +54,8 @@ gem 'redu_analytics', git: 'https://github.com/redu/analytics.git'
 gem 'humanizer'
 gem 'valium'
 gem 'dalli'
+gem 'prawn'
+gem 'prawn-table'
 gem 'simple-private-messages', '0.0.0', # A gem não possui .gemspec
   git: 'https://github.com/jongilbraith/simple-private-messages.git'
 gem 'rails_autolink'
