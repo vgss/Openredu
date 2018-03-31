@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170928125123) do
+ActiveRecord::Schema.define(:version => 20180331170255) do
 
   create_table "alternatives", :force => true do |t|
     t.text     "text"
@@ -206,6 +206,8 @@ ActiveRecord::Schema.define(:version => 20170928125123) do
     t.boolean  "published",         :default => true
     t.boolean  "destroy_soon",      :default => false
     t.boolean  "blocked",           :default => false
+    t.string   "initials"
+    t.float    "average"
   end
 
   add_index "courses", ["destroy_soon"], :name => "index_courses_on_destroy_soon"
