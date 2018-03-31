@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180331170255) do
+ActiveRecord::Schema.define(:version => 20180331172228) do
 
   create_table "alternatives", :force => true do |t|
     t.text     "text"
@@ -541,6 +541,8 @@ ActiveRecord::Schema.define(:version => 20180331170255) do
     t.boolean  "published",           :default => true
     t.boolean  "destroy_soon",        :default => false
     t.boolean  "blocked",             :default => false
+    t.string   "initials"
+    t.string   "turn"
   end
 
   add_index "spaces", ["course_id"], :name => "index_spaces_on_course_id"
@@ -606,6 +608,8 @@ ActiveRecord::Schema.define(:version => 20180331170255) do
     t.boolean  "visible",     :default => true
     t.boolean  "finalized",   :default => false
     t.boolean  "blocked",     :default => false
+    t.string   "initials"
+    t.string   "status"
   end
 
   add_index "subjects", ["space_id"], :name => "index_subjects_on_space_id"
