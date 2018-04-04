@@ -285,7 +285,7 @@ Redu::Application.routes.draw do
       resources :asset_reports, :path => "progress", :only => [:index]
     end
 
-    resources :users, :only => :show do
+    resources :users, :only => [:show, :create] do
       resources :course_enrollments, :only => :index, :path => :enrollments,
         :as => 'enrollments'
       resources :spaces, :only => :index
