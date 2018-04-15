@@ -202,6 +202,7 @@ Redu::Application.routes.draw do
         get :admin_members
         post :destroy_members
         post :search_users_admin
+        get :create_report
       end
       resources :courses do
         member do
