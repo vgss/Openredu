@@ -251,6 +251,7 @@ GEM
       cocaine (~> 0.3.0)
       mime-types
     pdf-core (0.7.0)
+    pdfkit (0.8.2)
     polyglot (0.3.5)
     pr_geohash (1.0.0)
     prawn (2.2.2)
@@ -299,6 +300,8 @@ GEM
     redu-has_friends (1.0.0)
     ref (2.0.0)
     remotipart (1.0.5)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     representable (1.5.3)
       multi_json
       nokogiri
@@ -402,6 +405,7 @@ GEM
     websocket (1.0.7)
     whenever (0.9.7)
       chronic (>= 0.6.3)
+    wkhtmltopdf-binary (0.12.3.1)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -448,6 +452,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (~> 4.0.0)
   paperclip (~> 2.7.5)
+  pdfkit
   prawn
   prawn-table
   premailer-rails
@@ -460,6 +465,7 @@ DEPENDENCIES
   redu-has_friends (~> 1.0)
   redu_analytics!
   remotipart (~> 1.0)
+  render_anywhere
   rest-client
   roar-rails
   route_translator
@@ -483,4 +489,5 @@ DEPENDENCIES
   vis_client!
   webmock
   whenever
+  wkhtmltopdf-binary
   yajl-ruby

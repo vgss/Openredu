@@ -64,6 +64,9 @@ gem 'dotenv-rails'
 gem 'puma'
 gem 'prawn'
 gem 'prawn-table'
+gem 'pdfkit'
+gem 'render_anywhere'
+gem 'wkhtmltopdf-binary'
 
 
 # Gems específicos para a API

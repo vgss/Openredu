@@ -55,43 +55,25 @@ class ResultsController < BaseController
 
   def download
     result = Result.find(params[:result_id])
-    
-    t = [["Enunciado", "Justificativa", "Resposta Correta", "Resposta do Aluno"]] + 
-    result.choices.map do |item|
+    #
+    t = result.choices.map do |item|
       [
-        ActionView::Base.full_sanitizer.sanitize(item.question.statement), 
-        ActionView::Base.full_sanitizer.sanitize(item.question.explanation), 
-        ActionView::Base.full_sanitizer.sanitize(item.question.correct_alternative.text), 
-        ActionView::Base.full_sanitizer.sanitize(item.alternative.text)
+        item.question.statement, 
+        item.question.explanation, 
+        item.question.correct_alternative.text, 
+        item.alternative.text
       ]
     end
 
     report = result.to_report
 
-    pdf = Prawn::Document.new
-    pdf.text "Aluno: #{result.user.display_name}"
-    pdf.move_down 10
-    pdf.text "Nota: #{report[:grade]}"
-    pdf.move_down 10
-    pdf.text "Acertos: #{report[:hits]}"
-    pdf.move_down 10
-    pdf.text "Erros: #{report[:misses]}"
-    pdf.move_down 10
-    pdf.text "Não respondeu: #{report[:blanks]}"
-    pdf.move_down 10
-    pdf.text "Duração do exame: #{detailed_period_of_time(report[:duration])}"
-    pdf.move_down 20
-    pdf.table t, position: :center
-    pdf.move_down 30
-    pdf.text "____________________________________________________", align: :center
-    pdf.move_down 5
-    pdf.text "Assinatura do professor ou Responsavel de sala", align: :center
-    
-    send_data pdf.render, 
-    filename: "order_a",
-    type: 'application/pdf',
-    disposition: 'inline'
+    html = render(template: 'results/download', locals: {results: t, report: report, result: result} ,layout: 'pdf')[0]
 
+    kit = PDFKit.new(html, page_size: 'A4')
+    send_file kit.to_file("#{Rails.root}/public/result_#{result.id}.pdf"),
+      filename: "result_#{result.id}.pdf",
+      type: "application/pdf",
+      disposition: "inline"
   end
 
   protected
