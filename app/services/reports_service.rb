@@ -29,8 +29,8 @@ class ReportsService
         ]
         exercises.each do |exercise| 
             users = exercise.subject.space.students
-            report_row = []
             users.each do |user|
+                report_row = []
                 if exercise.lectureable.finalized_by? user
                     result = exercise.lectureable.result_for user
                     report_row << user.id
@@ -46,9 +46,9 @@ class ReportsService
                     report_row << exercise.owner.display_name
                     report_row << exercise.subject.space.course.id
                     report_row << exercise.subject.space.course.name
+                    report << report_row
                 end
             end
-            report << report_row
         end
         csv_string = CSV.generate do |csv|
             report.each do |row|
