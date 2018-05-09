@@ -18,4 +18,17 @@ module ApplicationHelper
         ( additional_condition.nil? ? true : additional_condition.call )
     end
   end
+
+  # Function that fetches the current branch name from github and places in enviroment variable - hscs
+  def get_branch_info
+    branch_name = `git rev-parse --abbrev-ref HEAD`
+
+    last_commit = `git rev-parse --short HEAD`
+
+    content_tag :span, :class => 'label-release', :title => last_commit do
+      branch_name
+    end
+
+  end
+
 end

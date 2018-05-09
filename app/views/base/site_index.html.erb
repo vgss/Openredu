@@ -86,7 +86,11 @@
         </ul>
       </div>
       <div>
-        <span title="<%= ENV['RELEASE'] %>" class= 'label-release'><%= ENV['TAG'] %></span>
+      
+        <!-- new versioning system - hscs --> 
+       <%= get_branch_info %>
+        <!-- <span title="<%= ENV['RELEASE'] %>" class= 'label-release'><%= ENV['TAG'] %></span> -->
+
       </div>
     </div>
   </section>
