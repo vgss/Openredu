@@ -23,7 +23,8 @@ module ApplicationHelper
   def get_branch_info
     branch_name = `git rev-parse --abbrev-ref HEAD`
 
-    last_commit = `git rev-parse --short HEAD`
+    #last_commit = `git rev-parse --short HEAD`
+    last_commit = 'placeholder'
 
     content_tag :span, :class => 'label-release', :title => last_commit do
       branch_name

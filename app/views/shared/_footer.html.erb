@@ -36,8 +36,10 @@
             </li>
           </ul>
         <% else %>
-          <div style="text-align:center;line-height:125px"">
-            <span title="<%= ENV['RELEASE'] %>" class= 'label-doubts'><%= ENV['TAG'] %></span>
+          <div style="text-align:center;line-height:125px">
+            <!-- new versioning display system - hscs --> 
+            <%= get_branch_info %>
+            <!-- <span title="<%= ENV['RELEASE'] %>" class= 'label-doubts'><%= ENV['TAG'] %></span> -->
           </div>
         <% end %>
       </div>
