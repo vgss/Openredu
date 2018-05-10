@@ -26,7 +26,7 @@ module ApplicationHelper
     #last_commit = `git rev-parse --short HEAD`
     last_commit = 'placeholder'
 
-    content_tag :span, :class => 'label-release', :title => last_commit do
+    content_tag :span, :class => 'label-release label-doubts', :title => last_commit do
       branch_name
     end
 
