@@ -256,9 +256,9 @@ module Redu
 
     # SMTP settings
     config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
+      address: ENV['SMTP_ADDR'],
       port: 465,
-      domain: "cin.ufpe.br",
+      domain: ENV['SMTP_DOMAIN'],
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: ENV['SMTP_USER'],

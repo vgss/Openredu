@@ -47,7 +47,7 @@ Redu::Application.configure do
   config.i18n.fallbacks = true
 
   # Nome e URL do app
-  config.url = "www.redu.com.br"
+  config.url = ENV['APP_CFG_URL']
 
   config.action_mailer.default_url_options = \
     { :host => config.url }
@@ -74,7 +74,7 @@ Redu::Application.configure do
   config.action_mailer.smtp_settings = {
     :address => "email-smtp.us-east-1.amazonaws.com",
     :port => 465,
-    :domain => 'redu.com.br',
+    :domain => ENV['APP_DOMAIN'],
     :authentication => :login,
     :user_name => 'AKIAINQ5Y2UPLZJQM3EA',
     :password => 'AqEmj6PTCT8HJCpUB9qmIXQb+G2SaKEFjKcWrR9MLUaF'
