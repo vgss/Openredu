@@ -29,7 +29,7 @@ chromedriver.log
 solr/data/*
 solr/pids/*
 .sass-cache/
-.env.test
+
 .env.development
 .env.staging
 .env.production
