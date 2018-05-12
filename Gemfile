@@ -88,6 +88,7 @@ group :development, :test do
   gem 'no_peeping_toms', git: 'https://github.com/patmaddox/no-peeping-toms.git'
   gem 'rails3-generators'
   gem "rspec-rails", "~> 2.13"
+  gem 'pry'
 end
 
 group :test do

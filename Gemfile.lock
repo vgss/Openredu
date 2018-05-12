@@ -113,6 +113,7 @@ GEM
     classy_enum (3.2.1)
       rails (>= 3.0)
     cocaine (0.3.2)
+    coderay (1.1.2)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -208,6 +209,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     metaclass (0.0.1)
+    method_source (0.9.0)
     mime-types (1.25.1)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
@@ -265,6 +267,9 @@ GEM
     premailer-rails (1.4.0)
       premailer (~> 1.7)
       rails (>= 3)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     puma (3.10.0)
     rack (1.4.7)
     rack-cache (1.7.0)
@@ -456,6 +461,7 @@ DEPENDENCIES
   prawn
   prawn-table
   premailer-rails
+  pry
   puma
   rack-cors
   rails (~> 3.2.13)
