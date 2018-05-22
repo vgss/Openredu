@@ -73,6 +73,7 @@ module Redu
     # Máximo de caracteres p/ descrição
     config.desc_char_limit = 200
 
+    #configuracoes do chat
     config.faye_url = ENV['FAYE_URL']
     config.faye_js_url = "#{config.faye_url}/client.js"
 
