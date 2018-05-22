@@ -9,6 +9,7 @@ services:
     networks: 
       - vis_default
       - livredoc_default
+      - fayeopenrendu_default
 
   mongo:
     image: mongo
@@ -17,6 +18,8 @@ services:
     networks: 
       - vis_default
       - livredoc_default
+      - fayeopenrendu_default
+      
 
   app:
     build: .
@@ -30,6 +33,7 @@ services:
     networks: 
       - vis_default
       - livredoc_default
+      - fayeopenrendu_default
 
   delayedjob:
     build: .
@@ -42,6 +46,7 @@ services:
     networks: 
       - vis_default
       - livredoc_default
+      - fayeopenrendu_default
       
 volumes:
   mysql-datavolume:
@@ -51,4 +56,6 @@ networks:
   vis_default:
     external: true
   livredoc_default:
+    external: true
+  fayeopenrendu_default:
     external: true
