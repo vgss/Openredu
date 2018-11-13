@@ -301,6 +301,11 @@ module BaseHelper
         end
       when 'sessions'
         title = t(:login) + ' - ' + app_base + tagline
+      #HSCS
+      when 'environments'
+        title = 'Ambientes' + ' - ' + app_base + tagline
+      when 'courses'
+        title = 'Disciplinas' + ' - ' + app_base + tagline
     end
 
     if @page_title
