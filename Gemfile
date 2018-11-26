@@ -78,10 +78,16 @@ end
 
 # Gems específicos de algum ambiente
 group :development, :test do
+  # Test your JavaScript without any framework dependencies, in any environment, and with a nice descriptive syntax.
   gem 'jasmine'
+  # Disables observers during testing, allowing you to write model tests that are completely decoupled from the observer.
   gem 'no_peeping_toms', git: 'https://github.com/patmaddox/no-peeping-toms.git'
+  # Rails 3 compatible generators for gems that don't have them yet
   gem 'rails3-generators'
-  gem "rspec-rails", "~> 2.13"
+  # rspec-rails is a testing framework for Rails 3+.
+  gem 'rspec-rails', '~> 2.13'
+  #Easy and customizable generation of forged data.
+  gem 'forgery'
 end
 
 group :test do
