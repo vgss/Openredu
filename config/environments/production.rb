@@ -59,18 +59,6 @@ Redu::Application.configure do
   # Remove cores do log
   config.colorize_logging = false
 
-  # Configurações de VisClient
-  # Podem ser usadas as mesmas configs da vis em application.rb, apenas alterando em .env
-  # config.vis_client = {
-  #   :url => "http://vis.redu.com.br/hierarchy_notifications.json"
-  # }
-
-  # config.vis = {
-  #   :subject_activities => "http://vis.redu.com.br/subjects/activities.json",
-  #   :lecture_participation => "http://vis.redu.com.br/lectures/participation.json",
-  #   :students_participation => "http://vis.redu.com.br/user_spaces/participation.json"
-  # }
-
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => "email-smtp.us-east-1.amazonaws.com",
