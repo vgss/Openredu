@@ -285,19 +285,19 @@ module Redu
 
     config.assets.enabled = true
 
-    # Layout com bootstrap
-    config.assets.precompile += %w(new_application.js friend-invitation.js basic.js landing.js mobile.js status_show.js chat.js chat.jquery.js)
+    ### Layout com bootstrap
+    config.assets.precompile += %w(new_application.js friend-invitation.js basic.js landing.js mobile.js status_show.js chat.js chat.jquery.js document.js)
     config.assets.precompile += %w(bootstrap-redu.min.css new_application.css basic.css mobile.css authoring-page.css chat.scss chat.css)
     config.assets.precompile += %w(maintenance.css)
 
-    # Layout sem bootstrap
+    ### Layout sem bootstrap
     config.assets.precompile += %w(ie.js jquery.maskedinput.js canvas.js chart.js webview.js clean.js new_wall.js new_wall/lecture-toggle-comment-or-help.js)
     config.assets.precompile += %w(ie.css icons.redu.css preview-course-old.css page.css cold.css clean.css print.css email.css new_wall.css)
 
-    # Assets da nova landing page
+    ### Assets da nova landing page
     config.assets.precompile += %w(landing.css jquery.js rails.js)
 
-    # Assets do ckeditor
+    ### Assets do ckeditor
     config.assets.precompile += %w(ckeditor/*)
   end
 end
