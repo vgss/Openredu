@@ -22,6 +22,8 @@
 
 set :output, "#{@path}/log/whenever.log"
 
+set :environment, ENV['RAILS_ENV']
+
 unless @environment.eql?('production')
   every 30.minute do
     runner "PackageInvoice.refresh_states!"
