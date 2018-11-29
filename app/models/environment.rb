@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class Environment < ActiveRecord::Base
-  include ActsAsBillable
   include DestroySoon::ModelAdditions
   include EnvironmentSearchable
 

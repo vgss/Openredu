@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class Course < ActiveRecord::Base
-  include ActsAsBillable
   include DestroySoon::ModelAdditions
   include CourseSearchable
   include StatusService::BaseModelAdditions
