@@ -68,11 +68,6 @@
         <h3 class="invite-title">Convide membros para seu <span class="course">curso</span></h3>
         <span class="invite-description">Amplie sua base de membros. Procure pelo nome ou endereço de email; caso a pessoa não seja cadastrada no <%= Redu::Application.config.name%>, enviaremos um convite - que terá validade apenas para este curso. </span>
       </div>
-
-      <% unless can? :add_entry, @course %>
-        <div class="flash-message info">
-          <span>O limite de vagas foi atingido, seus convites não poderão ser aceitos. Faça o upgrade do seu curso, e aumente a capacidade de usuários.</span>
-        </div>
       <% end %>
       <%= form_tag invite_members_environment_course_path(@environment, @course),
         :class => 'form-common', :id => "invite-members" do %>
