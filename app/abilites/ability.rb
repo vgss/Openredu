@@ -132,17 +132,11 @@ class Ability
         document.can_upload_document?(document.lecture)
       end
 
-
       can :multiauth, User
 
       # My file
       cannot :upload_file, Folder do |folder|
         !folder.can_upload_file?
-      end
-
-      # Join in a Course
-      can :add_entry, Course do |el|
-        el.can_add_entry?
       end
 
       # Plan (payment gateway)
