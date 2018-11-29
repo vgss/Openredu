@@ -94,12 +94,6 @@ class CoursesController < BaseController
     @course.owner = current_user
     respond_to do |format|
       if @course.save
-        if @environment.plan.nil?
-          @plan = Plan.from_preset(:professor_plus)
-          @plan.user = current_user
-          @course.create_quota
-          @course.plan = @plan
-        end
         @environment.courses << @course
         format.html { redirect_to environment_course_path(@environment, @course) }
       else
