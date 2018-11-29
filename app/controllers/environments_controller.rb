@@ -66,11 +66,6 @@ class EnvironmentsController < BaseController
     if @environment.courses.first.nil? then @environment.courses.build end
     @environment.courses.first.name ||= params[:courses_name]
     @environment.courses.first.path ||= params[:courses_path]
-
-
-
-    @plan = Plan.from_preset(:professor_plus)
-    @plan.user = current_user
     case params[:step]
     when "1" # tela dos forms
       @step = 2
@@ -95,10 +90,6 @@ class EnvironmentsController < BaseController
         @environment.courses.first.owner = current_user
 
         if @environment.save
-          @environment.courses.first.plan = @plan
-
-          @environment.courses.first.create_quota
-
           format.html do
             flash[:notice] = "Parabens, o seu ambiente de ensino foi criado"
           end
