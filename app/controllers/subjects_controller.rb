@@ -21,8 +21,6 @@ class SubjectsController < BaseController
 
   def new
     @subject = Subject.new
-    @quota = @course.quota || @course.environment.quota
-    @plan = @course.plan || @course.environment.plan
 
     respond_to do |format|
       format.html { render "subjects/admin/new" }
@@ -35,9 +33,6 @@ class SubjectsController < BaseController
     @subject.space = Space.find(params[:space_id])
     @subject.save
 
-    @quota = @course.quota || @course.environment.quota
-    @plan = @course.plan || @course.environment.plan
-
     respond_with(@subject.space, @subject, :layout => !request.xhr?) do |format|
       format.js { render "subjects/admin/create" }
     end
@@ -45,8 +40,6 @@ class SubjectsController < BaseController
 
   def edit
     @editable_lectures = @subject.lectures.pages | @subject.lectures.exercises_editables
-    @quota = @course.quota || @course.environment.quota
-    @plan = @course.plan || @course.environment.plan
 
     respond_to do |format|
       format.html { render "subjects/admin/edit" }
@@ -54,9 +47,6 @@ class SubjectsController < BaseController
   end
 
   def update
-    @quota = @course.quota || @course.environment.quota
-    @plan = @course.plan || @course.environment.plan
-
     respond_to do |format|
       if @subject.update_attributes(params[:subject])
         if @subject.finalized?

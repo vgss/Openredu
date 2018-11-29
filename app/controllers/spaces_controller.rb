@@ -115,8 +115,6 @@ class SpacesController < BaseController
 
   # GET /spaces/1/edit
   def edit
-    @plan = @space.course.plan || @space.course.environment.plan
-    @billable = @plan.billable
 
     respond_to do |format|
       format.html { render "spaces/admin/edit" }
@@ -150,8 +148,6 @@ class SpacesController < BaseController
   # PUT /spaces/1
   # PUT /spaces/1.xml
   def update
-    @plan = @space.course.plan || @space.course.environment.plan
-    @billable = @plan.billable
     @header_space = @space.dup
     @header_space.id = @space.id
 
