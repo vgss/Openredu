@@ -121,23 +121,6 @@ class Seminar < ActiveRecord::Base
     (self.video? or self.audio?) && self.waiting?
   end
 
-  # Verifica se o curso tem espaço suficiente para o arquivo
-  def can_upload_multimedia?(lecture)
-    return true if self.external_resource_type == "youtube"
-
-    plan = lecture.subject.space.course.plan ||
-      lecture.subject.space.course.environment.plan
-    return false unless plan.active?
-
-    quota = lecture.subject.space.course.quota ||
-      lecture.subject.space.course.environment.quota
-    if quota.multimedia > plan.video_storage_limit
-      return false
-    else
-      return true
-    end
-  end
-
   protected
   def interpolate(text, mapping)
     mapping.each do |k,v|

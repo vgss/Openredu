@@ -13,10 +13,6 @@ class SeminarService < LectureableService
     end
   end
 
-  def authorize!(lecture)
-    ability.authorize!(:upload_multimedia, lecture)
-  end
-
   def process!
     @lectureable.transcode if @lectureable.need_transcoding?
   end
