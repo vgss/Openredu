@@ -151,11 +151,9 @@ class LecturesController < BaseController
       if @lecture.valid? && @lecture.make_sense?
         lectureable = @lecture.lectureable
         if lectureable.is_a? Seminar
-          authorize! :upload_multimedia, @lecture
           @lecture.save
           lectureable.convert! if lectureable.need_transcoding?
         elsif lectureable.is_a? Document
-          authorize! :upload_document, @lecture
           @lecture.save
           if @lecture.lectureable.attachment_content_type != 'application/pdf'
             response = nil

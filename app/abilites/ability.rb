@@ -122,11 +122,6 @@ class Ability
         user.can_read? space
       end
 
-      # Document
-      can :upload_document, Document do |document|
-        document.can_upload_document?(document.lecture)
-      end
-
       can :multiauth, User
 
       # My file
