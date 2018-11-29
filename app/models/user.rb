@@ -251,8 +251,6 @@ class User < ActiveRecord::Base
       end
     when 'User'
       entity == self
-    when 'Plan', 'PackagePlan', 'LicensedPlan'
-      entity.user == self || self.can_manage?(entity.billable)
     when 'Myfile'
       self.can_manage?(entity.folder)
     when 'Friendship'
@@ -318,7 +316,6 @@ class User < ActiveRecord::Base
     if (object.is_a? Folder)  ||
        (object.is_a? Status) || (object.is_a? Help) ||
        (object.is_a? User) || (object.is_a? Friendship) ||
-       (object.is_a? Plan) || (object.is_a? PackagePlan) ||
         (object.is_a? Result) || (object.is_a? Question) ||
         (object.is_a? Lecture)
 

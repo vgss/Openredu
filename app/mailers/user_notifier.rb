@@ -48,45 +48,6 @@ class UserNotifier < BaseMailer
     end
   end
 
-  # Enviado quando o Plan foi bloqueado
-  def blocked_notice(user, plan)
-    @user = user
-    @plan = plan
-    @billable_name = plan.billable.try(:name) || plan.billable_audit.try(:[], "name")
-
-    mail(:to => user.email,
-         :subject => "Plano do(a) #{@billable_name} foi bloqueado",
-         :date => Time.now) do |format|
-      format.text
-    end
-  end
-
-  # Enviado quando um upgrade de plano é requisitado
-  def upgrade_request(user, old_plan, new_plan)
-    @user = user
-    @old_plan = old_plan
-    @new_plan = new_plan
-
-    mail(:to => Redu::Application.config.email,
-         :subject => "[upgrade] #{@user.id}",
-         :date => Time.now) do |format|
-      format.text
-    end
-  end
-
-  # Enviado quando o Plan foi bloqueado
-  def blocked_notice(user, plan)
-    @user = user
-    @plan = plan
-    @billable_name = plan.billable.try(:name) || plan.billable_audit.try(:[], "name")
-
-    mail(:to => user.email,
-         :subject => "Plano do(a) #{@billable_name} foi bloqueado",
-         :date => Time.now) do |format|
-      format.text
-    end
-  end
-
   # Enviado ao convidar um usuário para um Course
   def course_invitation(user, course)
     @user, @course = user, course
