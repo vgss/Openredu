@@ -24,11 +24,6 @@ module Api
         c.owner = current_user
       end
       @course.save
-      @plan = Plan.from_preset(params[:course][:plan].try(:to_sym))
-      @plan.user = current_user
-      @course.plan = @plan
-      @plan.save
-      @course.create_quota
 
       respond_with :api, @course
     end

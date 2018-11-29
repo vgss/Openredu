@@ -19,7 +19,7 @@ module Api
     def destroy
       @environment = Environment.find(params[:id])
       authorize! :manage, @environment
-      @environment.audit_billable_and_destroy
+      @environment.async_destroy
 
       respond_with @environment
     end
