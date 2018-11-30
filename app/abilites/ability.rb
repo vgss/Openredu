@@ -51,9 +51,6 @@ class Ability
     # Message
     alias_action :delete_selected, :to => :manage
 
-    # Plan
-    alias_action :confirm, :address, :pay, :to => :manage
-
     # Reports
     alias_action :teacher_participation_interaction, :to => :manage
 
@@ -129,9 +126,6 @@ class Ability
         !folder.can_upload_file?
       end
 
-      # Plan (payment gateway)
-      can :read, :success
-
       # Caso seja o Status de usuário, apenas ele mesmo ou seus amigos
       # podem criá-lo/respondê-lo.
       can [:create, :respond], [Status, Activity, Answer, Help] do |status|
@@ -145,11 +139,6 @@ class Ability
 
       # Result
       can :update, Result, :state => 'started', :user_id => user.id
-
-      # Plan
-      cannot :migrate, Plan do |plan|
-        (plan.blocked? || plan.migrated?) && !is_admin
-      end
 
       cannot :update, Lecture do |lecture|
         lec = lecture.lectureable
