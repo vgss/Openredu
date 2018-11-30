@@ -11,7 +11,6 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
-   inflect.irregular 'quota', 'quotas'
    inflect.irregular 'media', 'medias'
    inflect.irregular 'canvas', 'canvas'
 end

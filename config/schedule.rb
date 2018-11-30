@@ -24,32 +24,10 @@ set :output, "#{@path}/log/whenever.log"
 
 set :environment, ENV['RAILS_ENV']
 
-unless @environment.eql?('production')
-  every 30.minute do
-    runner "PackageInvoice.refresh_states!"
-    runner "LicensedInvoice.refresh_states!"
-  end
-else
-  # 1am horário local
-  every 1.day, :at => '9pm' do
-    runner "PackageInvoice.refresh_states!"
-    runner "LicensedInvoice.refresh_states!"
-  end
-
+if @environment.eql?('production')
   # 4am horário local
   every :day, :at => '0am' do
     runner "Subject.destroy_subjects_unfinalized"
-  end
-
-  # 3am horário local
-  every :day, :at => '11pm' do
-    command "s3cmd sync --delete-removed --exclude=thumb_*/*" \
-      " --include=ckeditor/*" \
-      " s3://redu_uploads s3://redu-backup-static-files/redu_uploads/"
-    command "s3cmd sync --delete-removed" \
-      " s3://redu-videos s3://redu-backup-static-files/redu-videos/"
-    command "s3cmd sync --delete-removed" \
-      " s3://redu_files s3://redu-backup-static-files/redu_files/"
   end
 end
 
