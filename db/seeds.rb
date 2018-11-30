@@ -66,10 +66,6 @@ def create_courses
                             :destroy_soon=>false,
                             :blocked=>false)
 
-        plan = Plan.from_preset(:professor_plus)
-        plan.user = User.find(1)
-        course.create_quota
-        course.plan = plan
         course.save                            
     end
 end
