@@ -66,7 +66,6 @@ class User < ActiveRecord::Base
   has_many :subjects, order: 'name ASC',
     conditions: { finalized: true }
 
-  has_many :plans
   has_many :course_invitations, class_name: "UserCourseAssociation",
     conditions: ["state LIKE 'invited'"]
   has_many :experiences, dependent: :destroy
