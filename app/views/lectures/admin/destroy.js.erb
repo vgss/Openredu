@@ -7,7 +7,3 @@ $('#<%= @lecture.id %>-item').remove();
 <%= render 'lectures/admin/update_lecture_order' %>
 
 $("#space-manage #resources_list").refreshResourcesNumbering();
-
-<%# Atualiza quotas %>
-var $quotas = $("<%= escape_javascript render 'subjects/admin/quotas', :quota => @quota, :plan => @plan %>");
-$("#space-manage .concave-form .quotas").replaceWith($quotas);
