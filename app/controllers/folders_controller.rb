@@ -8,12 +8,6 @@ class FoldersController < BaseController
 
   before_filter :load_course_and_environment
 
-  rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.js { render :error_quota }
-    end
-  end
-
   # FILE
   def destroy_file
     @myfile = Myfile.find(params[:file_id], :include => :folder)
@@ -36,7 +30,6 @@ class FoldersController < BaseController
   # Upload the file and create a record in the database.
   # The file will be stored in the 'current' folder.
   def do_the_upload
-    authorize! :upload_file, @folder
 
     service = MyfileService.new(params[:myfile])
     @myfile = service.create do |myfile|

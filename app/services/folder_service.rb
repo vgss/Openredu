@@ -10,12 +10,4 @@ class FolderService < StoredContentService
   def update(attrs)
     model.update_attributes(attrs)
   end
-
-  protected
-
-  def infered_quota
-    if model && model.space
-      model.space.course.quota || model.space.course.environment.quota
-    end
-  end
 end

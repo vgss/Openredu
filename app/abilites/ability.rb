@@ -121,11 +121,6 @@ class Ability
 
       can :multiauth, User
 
-      # My file
-      cannot :upload_file, Folder do |folder|
-        !folder.can_upload_file?
-      end
-
       # Caso seja o Status de usuário, apenas ele mesmo ou seus amigos
       # podem criá-lo/respondê-lo.
       can [:create, :respond], [Status, Activity, Answer, Help] do |status|

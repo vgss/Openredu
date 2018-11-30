@@ -4,7 +4,6 @@ class StoredContentService
   attr_reader :model
 
   def initialize(opts)
-    @quota = opts.delete(:quota)
     @model_class = opts.delete(:model_class)
     @model = opts.delete(:model)
     @attrs = opts
@@ -35,22 +34,10 @@ class StoredContentService
   # Lança CanCan::AccessDenied caso não haja autorização
   def destroy
     model.destroy
-    refresh!
     model
   end
 
-  # Retorna quota. Caso não tenha sido passada na inicialização tenta inferir
-  # a partir do objeto criado pelo serviço.
-  def quota
-    @quota ||= infered_quota
-  end
-
   protected
-
-  def refresh!(&block)
-    yield if block_given?
-    quota.refresh!
-  end
 
   attr_reader :attrs, :model_class
 end
