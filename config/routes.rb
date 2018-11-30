@@ -157,7 +157,6 @@ Redu::Application.routes.draw do
         end
       end
 
-      resources :plans, :only => [:index]
       resources :experiences
       resources :educations, :except => [:new, :edit]
       resources :environments, :only => [:index]
@@ -173,24 +172,6 @@ Redu::Application.routes.draw do
     match 'contact' => "base#contact", :as => :contact
     match '/teach' => 'base#teach_index', :as => :teach_index
     get '/environments' => 'environments#index', :as => :environments_index
-
-    resources :plans, :only => [] do
-      member do
-        get :confirm
-        post :confirm
-        get :options
-      end
-
-      resources :invoices, :only => [:index, :show] do
-        member do
-          post :pay
-        end
-      end
-    end
-
-    match '/payment/callback' => 'payment_gateway#callback',
-      :as => :payment_callback
-    match '/payment/success' => 'payment_gateway#success', :as => :payment_success
 
     resources :environments, :path => '', :except => [:index] do
       member do
@@ -228,7 +209,6 @@ Redu::Application.routes.draw do
           match :roles, :to => 'roles#update', :via => :post, :as => :roles
         end
         resources :user_course_invitations, :only => [:show]
-        resources :plans, :only => [:create]
       end
 
       resources :users, :only => [:index]
@@ -236,7 +216,6 @@ Redu::Application.routes.draw do
         resources :roles, :only => :index
         match :roles, :to => 'roles#update', :via => :post, :as => :roles
       end
-      resources :plans, :only => [:create]
     end
 
     resources :pages, :only => :show
