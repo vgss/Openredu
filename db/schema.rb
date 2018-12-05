@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170928125123) do
+ActiveRecord::Schema.define(:version => 20181109180845) do
 
   create_table "alternatives", :force => true do |t|
     t.text     "text"
@@ -425,24 +425,6 @@ ActiveRecord::Schema.define(:version => 20170928125123) do
     t.datetime "updated_at"
   end
 
-  create_table "plans", :force => true do |t|
-    t.string   "state"
-    t.string   "name"
-    t.integer  "video_storage_limit"
-    t.integer  "members_limit"
-    t.integer  "file_storage_limit"
-    t.integer  "user_id"
-    t.integer  "billable_id"
-    t.string   "billable_type"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.text     "billable_audit"
-    t.string   "type"
-    t.boolean  "current",             :default => false
-  end
-
-  add_index "plans", ["current"], :name => "index_plans_on_current"
-
   create_table "questions", :force => true do |t|
     t.integer  "exercise_id"
     t.text     "statement"
@@ -450,15 +432,6 @@ ActiveRecord::Schema.define(:version => 20170928125123) do
     t.integer  "position"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "quotas", :force => true do |t|
-    t.integer  "multimedia",    :default => 0
-    t.integer  "files",         :default => 0
-    t.integer  "billable_id"
-    t.string   "billable_type"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
   end
 
   create_table "rates", :force => true do |t|
