@@ -309,4 +309,26 @@ class Course < ActiveRecord::Base
   def invited?(email)
     self.user_course_invitations.find_by_email(email)
   end
+
+  def copy_contents_to(course)
+
+    # Para cada disciplina do curso, duplica a disciplina e vincula ao curso passado como parâmetro
+    self.spaces.each do |spc|
+      newSpace = spc.dup
+      newSpace.course = course
+      newSpace.save
+
+      # Após isso, para cada disciplina original, copia-se os módulos com aulas para a disciplina recém copiada
+      spc.subjects.each do |sbj|
+        newSubject = sbj.dup
+        newSubject.owner = sbj.owner
+        newSubject.space = newSpace
+        newSubject.save!
+        
+        sbj.lectures.each do |lec|
+          lec.clone_for_subject!(newSubject.id)
+        end
+      end
+    end
+  end
 end
