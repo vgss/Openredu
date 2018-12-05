@@ -132,11 +132,6 @@ class FoldersController < BaseController
 
     @myfile ||= Myfile.new
 
-    # Set if the user is allowed to update or delete in this folder;
-    # these instance variables are used in the view.
-    @can_update = current_ability.can?(:upload_file, @folder)
-    @can_delete = @can_update
-
     # determine the order in which files are shown
     file_order = 'attachment_file_name '
     if params[:order_by]

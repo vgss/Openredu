@@ -12,8 +12,7 @@
     <%= image_tag("loadingAnimation.gif", :id => "loading-files", :style =>"display: none;" ) %>
     <ul class="folder_list child-folders">
       <%= render :partial => "folders/item", :collection => @folders,
-        :locals => { :space => @space, :can_update => @can_update,
-          :can_delete => @can_delete } %>
+        :locals => { :space => @space } %>
     </ul>
   </div>
 
@@ -31,8 +30,7 @@
           </tr>
         </thead>
         <%= render :partial => "folders/item_file", :collection => @myfiles,
-          :locals => { :space => @space, :folder => @folder,
-            :can_delete => @can_delete } %>
+          :locals => { :space => @space, :folder => @folder } %>
       </table>
     <% end %>
   </div>

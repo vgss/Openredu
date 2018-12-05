@@ -18,7 +18,6 @@
     <% end %>
   </div>
 
-  <% if can_delete %>
     <%=
       link_to "Excluir",
         destroy_folder_space_folder_path(space, item),
@@ -27,11 +26,8 @@
         :remote => true,
         :class => "delete icon-delete-gray_8_10-before"
       %>
-  <% end %>
 
-  <% if can_update %>
     <%= link_to "Renomear", '#',
       :class => "rename manage icon-manage-gray_8_10-before",
       :id => "#{item.id}" %>
-  <% end %>
 </li>
