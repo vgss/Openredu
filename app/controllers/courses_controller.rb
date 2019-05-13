@@ -187,21 +187,9 @@ class CoursesController < BaseController
       end
 
       # verifica se o limite de usuário foi atingido
-      if can?(:add_entry?, @course) and !approved.to_hash.empty?
-        # calcula o total de usuarios que estão para ser aprovados
-        # e só aprova aqueles que estiverem dentro do limite
-        total_members = @course.approved_users.count + approved.count
-        members_limit = @course.plan.try(:members_limit) ||
-          @course.environment.plan.try(:members_limit)
-        if total_members > members_limit
-          # remove o usuários que passaram do limite
-          (total_members - members_limit).times do
-            approved.shift
-          end
-          flash[:error] = "O limite máximo de usuários foi atigindo, apenas alguns membros foram moderados."
-        else
-          flash[:notice] = 'Membros moderados!'
-        end
+      if !approved.to_hash.empty?
+        
+        flash[:notice] = 'Membros moderados!'
 
         # Aprovando
         approved_ucas = @course.user_course_associations.waiting.
@@ -210,15 +198,9 @@ class CoursesController < BaseController
           uca.approve!
           UserNotifier.delay(queue: 'email').approve_membership(uca.user, @course)
         end
-      elsif can?(:add_entry?, @course) and !rejected.to_hash.empty?
+      elsif !rejected.to_hash.empty?
         # Avisa que os membros rejeitados foram moderados mesmo se não houver membros para serem aprovados
         flash[:notice] = 'Membros moderados!'
-      else
-        if rejected.to_hash.empty?
-          flash[:error] = "O limite máximo de usuários foi atingido. Não é possível adicionar mais usuários."
-        else
-          flash[:error] = "O limite máximo de usuários foi atingido. Só os usuários rejeitados foram moderados."
-        end
       end
     end
 
@@ -227,7 +209,6 @@ class CoursesController < BaseController
 
   # Associa um usuário a um Course (Ação de participar).
   def join
-    authorize! :add_entry, @course
 
     @course.join(current_user)
 
@@ -328,7 +309,6 @@ class CoursesController < BaseController
 
   # Aceitar convite para o Course
   def accept
-    authorize! :add_entry, @course
 
     assoc = current_user.get_association_with @course
     assoc.accept!
