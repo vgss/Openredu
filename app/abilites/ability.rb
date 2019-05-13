@@ -122,11 +122,6 @@ class Ability
         user.can_read? space
       end
 
-      # Seminar
-      can :upload_multimedia, Seminar do |seminar|
-        seminar.can_upload_multimedia?(seminar.lecture)
-      end
-
       # Document
       can :upload_document, Document do |document|
         document.can_upload_document?(document.lecture)
