@@ -20,16 +20,12 @@
       </div>
     </div>
     <div class="general-list-item-footer">
-      <% if can? :add_entry, item_invitation.course %>
         <%= form_tag accept_environment_course_path(
           item_invitation.course.environment,
           item_invitation.course),
           :remote => true, :class => "pull-right" do %>
           <%= submit_tag "Aceitar", :class => "button-success" %>
         <% end %>
-      <% else %>
-        <button class="button-success pull-right" disabled="disabled">Limite de vagas atingido</button>
-      <% end %>
       <%= form_tag deny_environment_course_path(
                                    item_invitation.course.environment,
                                    item_invitation.course),
