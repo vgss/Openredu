@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence(:path){ |n| "curso-#{n}" }
     association :owner, :factory => :user
     environment { |course| FactoryGirl.create(:environment, :owner => course.owner) }
-    association :quota, :factory => :quota
   end
 
   factory :complete_course, :parent => :course do
