@@ -90,7 +90,6 @@ describe FoldersController do
       end
 
       before do
-        space.course.plan = FactoryGirl.build(:plan, :billable => nil)
         Folder.any_instance.stub(:can_upload_file?) { true }
       end
 
