@@ -28,8 +28,7 @@ describe CoursesController do
     let(:environment_params) { locale_params.merge(environment_id: environment.path) }
     let(:params) do
       environment_params.
-        merge({ course: { name: "Redu", path: "redu", subscription_type: "1" },
-                plan: "free" })
+        merge({ course: { name: "Redu", path: "redu", subscription_type: "1" }})
     end
 
     before { login_as user }
@@ -42,25 +41,6 @@ describe CoursesController do
       it "should create the course" do
         assigns[:course].should_not be_nil
         assigns[:course].should be_valid
-      end
-
-      it "should create the plan" do
-        assigns[:course].plan.should_not be_nil
-      end
-
-      it "should assign the plan user to current_user" do
-        assigns[:course].plan.user.should == user
-      end
-
-      it "should create the quota and computes it" do
-        assigns[:course].quota.should_not be_nil
-      end
-    end
-
-    context "POST create" do
-      it "should be a professor_plus plan" do
-        post :create, params
-        assigns[:plan].name.should == "Professor Plus"
       end
     end
   end
@@ -95,11 +75,8 @@ describe CoursesController do
   end
 
   context "when moderating a course" do
-    let!(:plan) { FactoryGirl.create(:plan, billable: course, user: course.owner) }
-
     before do
       course.update_attribute(:subscription_type, 2)
-      course.create_quota
       login_as user
     end
 
@@ -170,8 +147,6 @@ describe CoursesController do
   end
 
   context "when unjoin from a course (POST unjoin)" do
-    let!(:plan) { FactoryGirl.create(:plan, billable: course, user: course.owner) }
-
     before do
       course.join(user)
       login_as user
@@ -230,14 +205,9 @@ describe CoursesController do
   end # context "when unjoin from a course (POST unjoin)"
 
   context "when responding a course invitation" do
-    let!(:plan) do
-      FactoryGirl.
-        create(:plan, billable: course, user: course.owner, members_limit: 5)
-    end
     let(:visitor) { FactoryGirl.create(:user) }
 
     before do
-      course.create_quota
       login_as visitor
       course.invite visitor
     end
@@ -348,12 +318,7 @@ describe CoursesController do
       let(:visitor) { FactoryGirl.create(:user) }
 
       before do
-        @plan = FactoryGirl.
-          create(:active_package_plan, billable: course, user: course.owner)
-
-        environment.create_quota
         environment.reload
-
         login_as(visitor)
       end
 
@@ -372,9 +337,6 @@ describe CoursesController do
   context "when the limit of members is full" do
     let(:visitor) { FactoryGirl.create(:user) }
     before do
-      plan = FactoryGirl.
-        create( :plan, billable: course, user: course.owner, members_limit: 5)
-      course.create_quota
       users
     end
 
@@ -527,10 +489,6 @@ describe CoursesController do
 
     context "POST create" do
       context "when successful" do
-        before do
-          base_params.merge!(plan: :free)
-        end
-
         it "redirects to Courses#show" do
           post :create, base_params
           response.should redirect_to(controller.environment_course_path(environment, Course.last))
@@ -540,7 +498,6 @@ describe CoursesController do
       context "when failing" do
         before do
           course_attrs.merge!(name: "", path: "")
-          base_params.merge!(plan: :free)
           post :create, base_params
         end
 
@@ -571,7 +528,7 @@ describe CoursesController do
     context "POST update" do
       context "when successful" do
         before do
-          base_params.merge!(plan: :free, id: course.path)
+          base_params.merge!(id: course.path)
           post :update, base_params
         end
 
@@ -584,7 +541,7 @@ describe CoursesController do
       context "when failing" do
         before do
           course_attrs.merge!(path: "")
-          post :update, base_params.merge!(plan: :free, id: course.path)
+          post :update, base_params.merge!(id: course.path)
         end
 
         it "re-renders courses/admin/edit" do
