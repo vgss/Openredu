@@ -334,53 +334,6 @@ describe CoursesController do
     end
   end
 
-  context "when the limit of members is full" do
-    let(:visitor) { FactoryGirl.create(:user) }
-    before do
-      users
-    end
-
-    context "and course isn't moderated" do
-      it "should not authorize more 1 user" do
-        login_as  visitor
-        expect {
-          post :join, nested_course_params
-        }.to_not change(UserCourseAssociation, :count).by(1)
-      end
-    end
-
-    context "and course is moderated" do
-      before do
-        course.update_attribute(:subscription_type, 2)
-      end
-
-      context "POST accept" do
-        it "should not authorize more 1 user" do
-          login_as user
-          course.invite(visitor)
-
-          login_as visitor
-          expect {
-            post :accept, nested_course_params
-          }.to_not change(course.approved_users, :count).by(1)
-        end
-      end
-
-      context "POST moderate_members" do
-        it "should not authorize more 1 user" do
-          login_as user
-          course.join(visitor)
-
-          @params = nested_course_params.merge( member: { visitor.id.to_s => "approve"})
-
-          expect {
-            post :moderate_members_requests, @params
-          }.to_not change(course.approved_users, :count).by(1)
-        end
-      end
-    end
-  end
-
   context "when viewing sent invitations (GET admin_manage_invitations)" do
     before do
       login_as user
