@@ -28,10 +28,6 @@ describe EnvironmentsController do
         assigns[:environment].should be_valid
         assigns[:step].should == 2
       end
-
-      it "assigns the plan should be professor_plus" do
-        assigns[:plan].name.should == "Professor Plus"
-      end
     end
 
     context "at step 2" do
@@ -39,7 +35,6 @@ describe EnvironmentsController do
       context "when is valid" do
         before do
           @params[:step] = "2"
-          @params[:plan] = "professor_standard"
           post :create, @params
         end
 
@@ -48,16 +43,11 @@ describe EnvironmentsController do
           assigns[:environment].should be_valid
           assigns[:step].should == 3
         end
-
-        it "assigns the plan" do
-          assigns[:plan].name.should == "Professor Plus"
-        end
       end
 
       context "when isn't valid" do
         before do
           @params[:step] = "2"
-          @params[:plan] = "professor_standard"
           @params[:environment][:name] = ""
           post :create, @params
         end
@@ -67,16 +57,11 @@ describe EnvironmentsController do
          assigns[:environment].should_not be_valid
          assigns[:step].should == 2
         end
-
-        it "assigns the plan" do
-          assigns[:plan].should_not be_nil
-        end
       end
     end
     context "at step 3" do
       before do
         @params[:step] = "3"
-        @params[:plan] = "free"
         @params[:color] = "f56b00"
         @params[:locale] = "pt-BR"
         @params[:format] = "js"
@@ -87,25 +72,6 @@ describe EnvironmentsController do
       it "assigns and creates the environment" do
         assigns[:environment].should_not be_nil
         assigns[:environment].should_not be_new_record
-      end
-
-      it "assigns and creates the plan" do
-        assigns[:plan].should_not be_nil
-        assigns[:plan].should be_valid
-        assigns[:plan].should_not be_new_record
-      end
-
-      it "associates the plan to the course" do
-        assigns[:environment].courses.first.plan.should == assigns[:plan]
-      end
-
-      it "associates the quota to the course" do
-        course = assigns[:environment].courses.first
-        course.quota.should_not be_nil
-      end
-
-      it "associates the plan with the user" do
-        assigns[:plan].user.should == @user
       end
 
       it "redirects to course page" do
@@ -183,14 +149,9 @@ describe EnvironmentsController do
 
     context "POST destroy" do
       before do
-        @plan = FactoryGirl.create(:active_package_plan, :billable => @environment)
         @post_params = { :locale => "pt-BR" }
         @post_params[:id] = @environment.path
         post :destroy, @post_params
-      end
-
-      it "should store billable" do
-        @plan.reload.billable_audit.should_not be_nil
       end
     end
 
