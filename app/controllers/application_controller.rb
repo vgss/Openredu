@@ -81,9 +81,6 @@ class ApplicationController < ActionController::Base
 
     flash[:error] = "Essa área só pode ser vista após você acessar o #{Redu::Application.config.name} com seu nome e senha."
 
-    puts exception.action
-    puts exception.subject
-
     yield if block_given?
 
     if current_user_agent.mobile?
