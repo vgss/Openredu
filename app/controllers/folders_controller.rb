@@ -36,8 +36,6 @@ class FoldersController < BaseController
   # Upload the file and create a record in the database.
   # The file will be stored in the 'current' folder.
   def do_the_upload
-    authorize! :upload_file, @folder
-
     service = MyfileService.new(params[:myfile])
     @myfile = service.create do |myfile|
       myfile.user = current_user

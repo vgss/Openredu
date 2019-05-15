@@ -126,7 +126,7 @@ class Ability
 
       # My file
       cannot :upload_file, Folder do |folder|
-        !folder.can_upload_file?
+        false
       end
 
       # Plan (payment gateway)
