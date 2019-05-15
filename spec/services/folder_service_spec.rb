@@ -3,12 +3,7 @@ require 'spec_helper'
 
 describe FolderService do
   context "creating folder" do
-    let(:quota) { mock_model('Quota') }
     let(:model_attrs) {{ :name => 'New Folder' }}
-    let(:params) do
-      model_attrs.merge({ :quota => quota })
-    end
-
 
     describe "#create" do
       subject { FolderService.new(params) }
@@ -49,19 +44,10 @@ describe FolderService do
       let!(:folder) { FactoryGirl.create(:folder) }
       subject { FolderService.new(params.merge(:model => folder)) }
 
-      before do
-        quota.stub(:refresh!)
-      end
-
       it "should destroy Folder" do
         expect {
           subject.destroy
         }.to change(Folder, :count).by(-1)
-      end
-
-      it "should #refresh! quota" do
-        subject.send(:quota).should_receive(:refresh!)
-        subject.destroy
       end
 
       it "should return the folder instance" do

@@ -6,16 +6,9 @@ describe MyfileService do
     let(:file) do
       File.open("#{Rails.root}/spec/fixtures/api/pdf_example.pdf")
     end
-    let(:quota) { mock_model('Quota') }
     let(:model_attrs) { { :attachment => file } }
-    let(:params) do
-      model_attrs.merge({ :quota => quota })
-    end
     subject do
       MyfileService.new(params)
-    end
-    before do
-      quota.stub(:refresh!)
     end
 
     context "#create" do
@@ -32,17 +25,6 @@ describe MyfileService do
         end
 
         myfile.user.should_not be_nil
-      end
-
-      it "should #refresh! quota" do
-        subject.quota.should_receive(:refresh!)
-        subject.create
-      end
-
-      it "should not #refresh! if Myfile is not saved" do
-        subject.stub(:build).and_return(Myfile.new)
-        subject.create
-        subject.quota.should_not_receive(:refresh!)
       end
     end
 
@@ -63,34 +45,6 @@ describe MyfileService do
       end
     end
 
-    context "#quota" do
-      context "when passed to .new" do
-        it "should return the quota passed to .new" do
-          subject.quota.should == quota
-        end
-      end
-
-      context "when not passed to .new" do
-        it "should infer the quota when it's not passed to .new" do
-          folder = mock_model("Folder")
-          folder.stub_chain(:space, :course, :quota).and_return(quota)
-
-          service = MyfileService.new(model_attrs)
-
-          service.create do |s|
-            s.folder = folder
-          end
-
-          service.quota.should == quota
-        end
-
-        it "should return nil if the wasn't  created" do
-          service = MyfileService.new(model_attrs)
-          service.quota.should be_nil
-        end
-      end
-    end
-
     describe "#destroy" do
       let!(:myfile) { FactoryGirl.create(:myfile) }
       subject { MyfileService.new(params.merge(:model => myfile)) }
@@ -99,11 +53,6 @@ describe MyfileService do
         expect {
           subject.destroy
         }.to change(Myfile, :count).by(-1)
-      end
-
-      it "should #refresh! quota" do
-        subject.send(:quota).should_receive(:refresh!)
-        subject.destroy
       end
 
       it "should return the myfile instance" do
