@@ -265,31 +265,6 @@ describe Ability do
           @ability.should_not be_able_to(:destroy, course)
         end
 
-        context "if plan is blocked" do
-          before do
-            @course = FactoryGirl.create(:course,:owner => @env_admin,
-                              :environment => @environment)
-            @plan = FactoryGirl.create(:active_package_plan, :billable => @course)
-            @plan.block!
-            @space = FactoryGirl.create(:space, :owner => @env_admin, :course => @course)
-            @sub = FactoryGirl.create(:subject, :owner => @env_admin, :space => @space)
-          end
-
-          # Need Seminar factory
-          it "can NOT upload multimedia"
-
-          it "can create a Youtube seminar" do
-            youtube = FactoryGirl.build(:seminar_youtube)
-            lecture = FactoryGirl.create(:lecture, :owner => @env_admin,
-                              :subject => @sub,
-                              :lectureable => youtube)
-            @ability.should be_able_to(:upload_multimedia, youtube)
-          end
-
-          # Need Myfile factory
-          it "can NOT upload file"
-        end
-
         it "can see reports" do
           @ability.should be_able_to(:teacher_participation_report,
                                      @course)
