@@ -4,10 +4,15 @@ require 'spec_helper'
 describe FolderService do
   context "creating folder" do
     let(:model_attrs) {{ :name => 'New Folder' }}
-    let(:params) {{ :name => 'New Folder' }}
+    let(:params) do
+      model_attrs.merge({})
+    end
 
     describe "#create" do
-      subject { FolderService.new(params) }
+      
+      before(:each) do 
+        subject { FolderService.new(params) }
+      end
 
       it "should create Folder" do
         expect {
@@ -25,8 +30,11 @@ describe FolderService do
     end
 
     describe "#build" do
-      subject { FolderService.new(params) }
-
+      
+      before(:each) do 
+        subject { FolderService.new(params) }
+      end
+      
       it "should instanciate Folder" do
         model = mock_model('Folder')
         subject.stub(:model_class).and_return(model)
@@ -43,7 +51,10 @@ describe FolderService do
 
     describe "#destroy" do
       let!(:folder) { FactoryGirl.create(:folder) }
-      subject { FolderService.new(params.merge(:model => folder)) }
+      
+      before(:each) do 
+        subject { FolderService.new(params.merge(:model => folder)) }
+      end
 
       it "should destroy Folder" do
         expect {
@@ -59,9 +70,12 @@ describe FolderService do
     describe "#update" do
       let(:folder) { FactoryGirl.create(:folder) }
       let(:user) { FactoryGirl.create(:user) }
-      subject { FolderService.new(params.merge(:model => folder)) }
       let(:folder_params) { { :name => "Old" } }
-
+      
+      before(:each) do 
+        subject { FolderService.new(params.merge(:model => folder)) }
+      end
+      
       it "should update folder attributes" do
         expect {
           subject.update(folder_params)
