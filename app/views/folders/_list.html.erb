@@ -18,7 +18,6 @@
   </div>
 
   <div id="file_list" >
-    <span class="quota">Usando <%= number_to_human_size(@space.course.quota.try(:files) || @space.course.environment.quota.try(:files), :precision => 0) %></span>
     <% unless  @myfiles.empty? %>
       <span class="title">Arquivos</span>
       <table class="common files">
@@ -35,7 +34,6 @@
           :locals => { :space => @space, :folder => @folder,
             :can_delete => @can_delete } %>
       </table>
-      <span class="quota">Usando <%= number_to_human_size(@space.course.quota.try(:files) || @space.course.environment.quota.try(:files), :precision => 0) %></span>
     <% end %>
   </div>
 </div>
