@@ -134,6 +134,7 @@ pt-BR:
   activerecord:
     models:
       user: "usuário"
+      myfile: "arquivo"
     attributes:
       photo:
         created_at: "criado em: "
@@ -221,6 +222,12 @@ pt-BR:
         taken: "Já existente."
         invalid: "Inválido."
       models:
+        myfile:
+          attributes: 
+            attachment:
+              empty: "vazio"
+            attachment_file_name:
+              empty: "vazio"
         user:
           attributes:
             first_name:
