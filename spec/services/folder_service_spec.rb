@@ -4,9 +4,7 @@ require 'spec_helper'
 describe FolderService do
   context "creating folder" do
     let(:model_attrs) {{ :name => 'New Folder' }}
-    let(:params) do
-      model_attrs.merge({})
-    end
+    let(:params) {{ :name => 'New Folder' }}
 
     describe "#create" do
       subject { FolderService.new(params) }
