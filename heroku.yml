@@ -1,7 +1,7 @@
 build:
   docker:
-    app: Dockerfile
+    web: Dockerfile
     solr: Dockerfile
 run:
-  app: bundle exec puma -C config/puma.rb
+  web: bundle exec puma -C config/puma.rb
   solr: bundle exec rake sunspot:solr:start
