@@ -78,7 +78,8 @@ Redu::Application.configure do
     :domain => ENV['SMTP_DOMAIN'],
     :authentication => ENV.fetch('SMTP_AUTHENTICATION', :login),
     :user_name => ENV['SMTP_USER'],
-    :password => ENV['SMTP_PASSWD']
+    :password => ENV['SMTP_PASSWD'],
+    openssl_verify_mode: none
   }
 
   # Compress JavaScripts and CSS
