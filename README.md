@@ -48,7 +48,7 @@ References
 
 TODO
 
-- [ ] bundle update
+- [ ] bin/update
 
 ### Update README Table of Contents (ToC)
 

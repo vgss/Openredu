@@ -5,7 +5,7 @@ ruby '2.5.9'
 gem 'aasm'
 gem 'premailer-rails'
 gem 'classy_enum'
-gem 'activerecord-import'
+gem 'activerecord-import', '~> 1.1'
 gem 'acts_as_tree', '~> 0.1.1'
 gem 'acts-as-taggable-on', '~> 2.4'
 gem 'ajaxful_rating', '3.0.0.beta8'
@@ -15,7 +15,7 @@ gem 'bundler', '~> 1.2'
 gem 'cancan', '~> 1.6.7'
 gem 'ckeditor', '4.1.3'
 gem 'daemons', '1.0.10'
-gem 'date_validator'
+gem 'date_validator', '0.11.0'
 gem 'deep_cloneable'
 gem 'delayed_job_mongoid'
 gem 'bson_ext'
@@ -32,24 +32,28 @@ gem 'mime-types'
 gem "mysql2", '~> 0.3.21'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0.0'
-gem 'paperclip', '~> 2.7.5'
+gem 'paperclip', '~> 2.7'
 gem 'rails', '~> 4.2.11'
-gem "rake", "~> 10.0.4"
 gem 'remotipart', '~> 1.0'
 gem 'simple-navigation','3.10.1'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'route_translator'
 gem 'useragent'
-gem 'vis_client', git: 'https://github.com/redu/vis_client.git',
-  branch: 'ruby-1-9-3'
+
+# TODO: Release a gem for the vis_client project.
+gem 'vis_client', '0.0.9', git: 'https://github.com/Openredu/vis_client.git', branch: 'main'
+
 gem 'chronic' # Necessário ao whenever
 gem 'whenever', require: false
 gem 'untied-publisher', '~> 0.0.7.pre3'
 gem 'yajl-ruby'
 gem 'simple_acts_as_list'
 gem 'ey_config'
-gem 'destroy_soon'
+
+# TODO: Fetch from RubyGems instead of GitHub.
+gem 'destroy_soon', '0.0.9', git: 'https://github.com/Openredu/destroy-soon', branch: 'main'
+
 gem 'redu_analytics', git: 'https://github.com/redu/analytics.git'
 gem 'humanizer'
 gem 'valium'
@@ -67,13 +71,14 @@ gem 'oauth-plugin', '~> 0.4.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'roar-rails'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2'
-  gem 'compass-rails'
-  gem 'therubyracer', platforms: :ruby
-  gem 'uglifier', '~> 2'
-  gem 'turbo-sprockets-rails3'
-end
+# NOTE: the assets group was removed in Rails 4.2.
+# group :assets do
+gem 'sass-rails', '~> 4.0'
+gem 'compass-rails', '1.0.3' # EOL: Use compass-statement?
+gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '~> 2'
+gem 'turbo-sprockets-rails4'
+# end group :assets
 
 # Gems específicos de algum ambiente
 group :development, :test do
