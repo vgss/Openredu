@@ -3,7 +3,7 @@
 <!-- toc -->
 
   * [Openredu Core](#openredu-core)
-    + [Atualização do sumário (TOC) do README](#atualizacao-do-sumario-toc-do-readme)
+    + [Update README Table of Contents (ToC)](#update-readme-table-of-contents-toc)
     + [Branches](#branches)
     + [Comunidade de Software Livre Openredu](#comunidade-de-software-livre-openredu)
     + [Setup](#setup)
