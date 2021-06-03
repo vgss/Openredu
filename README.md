@@ -3,6 +3,7 @@
 <!-- toc -->
 
   * [Openredu Core](#openredu-core)
+    + [Upgrading Ruby & Rails](#upgrading-ruby--rails)
     + [Update README Table of Contents (ToC)](#update-readme-table-of-contents-toc)
     + [Branches](#branches)
     + [Comunidade de Software Livre Openredu](#comunidade-de-software-livre-openredu)
