@@ -34,6 +34,11 @@ Este repositório contem o core do Openredu. O openredu-core é a parte central 
 - [ReduPy](http://github.com/redu/redupy): Encapsulador Python para a API REST do Redu.
 - [JRedu](http://github.com/redu/jredu): Encapsulador Java para a API REST do Redu.
 
+### Branches
+
+- master: branch principal
+- main: pretenso branch principal em que @embs está tentando atualizar as versões do Ruby e do Rails
+
 ### Comunidade de Software Livre Openredu
 
 Em caso de desejar fazer contato direto com a comunidade, existe um [fórum](http://forum.openredu.com) ([http://forum.openredu.com](http://forum.openredu.com)) o qual você pode tirar suas dúvidas, fazer postagens com sugestões, comentários e elogios. Sinta-se a vontade para contribuir e fazer a comunidade crescer!
