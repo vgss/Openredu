@@ -1,5 +1,22 @@
 [![Build Status](https://travis-ci.org/Openredu/Openredu.svg?branch=master)](https://travis-ci.org/Openredu/Openredu)
 
+<!-- toc -->
+
+  * [Openredu Core](#openredu-core)
+    + [Comunidade de Software Livre Openredu](#comunidade-de-software-livre-openredu)
+    + [Setup](#setup)
+      - [Scripts pra setup no Mac:](#scripts-pra-setup-no-mac)
+      - [Dependências](#dependencias)
+    + [Coding style](#coding-style)
+    + [Contribuições](#contribuicoes)
+      - [Pull requests](#pull-requests)
+      - [Reportando issues](#reportando-issues)
+      - [Reportando issues da API](#reportando-issues-da-api)
+    + [DelayedJob](#delayedjob)
+- [Licença Utilizada](#licenca-utilizada)
+
+<!-- tocstop -->
+
 ## Openredu Core
 
 Este repositório contem o core do Openredu. O openredu-core é a parte central da plataforma social educacional Openredu. Também existem alguns subsistemas/serviços que estão em servidores/projetos/repositórios diferentes. A saber:

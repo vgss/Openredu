@@ -1,0 +1,14 @@
+{
+  "name": "Openredu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Openredu/Openredu.git",
+  "author": "Matheus Santana <matheus@guava.software>",
+  "license": "MIT",
+  "scripts": {
+    "toc": "markdown-toc -i README.md"
+  },
+  "dependencies": {
+    "markdown-toc": "^1.2.0"
+  }
+}
