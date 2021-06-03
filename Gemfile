@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby '2.5.9'
 
 gem 'aasm'
 gem 'premailer-rails'
@@ -33,7 +33,7 @@ gem "mysql2", '~> 0.3.21'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'paperclip', '~> 2.7.5'
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 4.2.11'
 gem "rake", "~> 10.0.4"
 gem 'remotipart', '~> 1.0'
 gem 'simple-navigation','3.10.1'

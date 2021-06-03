@@ -36,6 +36,19 @@ Este repositório contem o core do Openredu. O openredu-core é a parte central 
 - [ReduPy](http://github.com/redu/redupy): Encapsulador Python para a API REST do Redu.
 - [JRedu](http://github.com/redu/jredu): Encapsulador Java para a API REST do Redu.
 
+### Upgrading Ruby & Rails
+
+References
+
+- https://guides.rubyonrails.org/v4.0/upgrading_ruby_on_rails.html#upgrading-from-rails-3-2-to-rails-4-0
+- https://jamesjeffersconsulting.com/ruby-rails-version-matrix/
+- https://www.fastruby.io/blog/rails/upgrades/upgrade-rails-from-3-2-to-4-0.html
+- https://railsbump.org/
+
+TODO
+
+- [ ] bundle update
+
 ### Update README Table of Contents (ToC)
 
     $ yarn toc
