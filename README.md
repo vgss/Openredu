@@ -3,6 +3,8 @@
 <!-- toc -->
 
   * [Openredu Core](#openredu-core)
+    + [Atualização do sumário (TOC) do README](#atualizacao-do-sumario-toc-do-readme)
+    + [Branches](#branches)
     + [Comunidade de Software Livre Openredu](#comunidade-de-software-livre-openredu)
     + [Setup](#setup)
       - [Scripts pra setup no Mac:](#scripts-pra-setup-no-mac)
@@ -33,6 +35,10 @@ Este repositório contem o core do Openredu. O openredu-core é a parte central 
 - [Permit](http://github.com/redu/permit): Autorização e gerênciamento de políticas de acesso entre serviços.
 - [ReduPy](http://github.com/redu/redupy): Encapsulador Python para a API REST do Redu.
 - [JRedu](http://github.com/redu/jredu): Encapsulador Java para a API REST do Redu.
+
+### Atualização do sumário (TOC) do README
+
+    $ yarn toc
 
 ### Branches
 
