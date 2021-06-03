@@ -5,7 +5,6 @@ log/*.lck
 tmp/
 *.swp
 mongrel/
-bin/
 log/**/*
 *.tmproj
 *~

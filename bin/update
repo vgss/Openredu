@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Most important/bigger dependencies first.
+bundle update \
+  rails \
+  rake \
+  activerecord-import \
+  destroy_soon \
+  mongoid \
+  mime-types \
+  paperclip \
+  rest-client \
+  vis_client \
+  date_validator \
+  sass-rails \
+  sass \
+  compass-rails
