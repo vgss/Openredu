@@ -36,9 +36,12 @@ Este repositório contem o core do Openredu. O openredu-core é a parte central 
 - [ReduPy](http://github.com/redu/redupy): Encapsulador Python para a API REST do Redu.
 - [JRedu](http://github.com/redu/jredu): Encapsulador Java para a API REST do Redu.
 
-### Atualização do sumário (TOC) do README
+### Update README Table of Contents (ToC)
 
     $ yarn toc
+
+Limitação: a [ferramenta](https://www.npmjs.com/package/markdown-toc) que a gente tá usando não funciona bem com
+acentuação gráfica: os links do sumário não funcionam se os títulos tiverem acentos gráficos.
 
 ### Branches
 
